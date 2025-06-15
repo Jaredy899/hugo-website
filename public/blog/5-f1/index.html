@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61411&amp;path=livereload" data-no-instant defer></script>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8" />
     <meta name="description" content="Personal website of Jared Cervantes" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="view-transition" content="same-origin" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content="" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +99,25 @@
                 "Liberation Mono",
                 "Courier New",
                 monospace;
+        }
+
+         
+        @supports (view-transition-name: none) {
+            .jc-logo-transition {
+                view-transition-name: jc-logo;
+            }
+        }
+
+         
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation-duration: 0.3s;
+        }
+
+        ::view-transition-old(jc-logo),
+        ::view-transition-new(jc-logo) {
+            animation-duration: 0.5s;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         }
 
          
@@ -527,7 +547,7 @@
             <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="-50 -50 700 519"
-    class="jc-logo"
+    class="jc-logo jc-logo-transition"
 >
     <g>
         <path
@@ -1073,6 +1093,217 @@
     
     <script>
         
+        let isTransitioning = false;
+        
+        function enableViewTransitions() {
+            
+            if (!document.startViewTransition) {
+                return;
+            }
+
+            
+            document.addEventListener('click', async (e) => {
+                
+                if (isTransitioning) {
+                    e.preventDefault();
+                    return;
+                }
+
+                const link = e.target.closest('a');
+                if (!link) return;
+                
+                const href = link.getAttribute('href');
+                
+                if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank') {
+                    return;
+                }
+                
+                
+                try {
+                    
+                    let fullUrl;
+                    if (href.startsWith('/')) {
+                        fullUrl = window.location.origin + href;
+                    } else {
+                        fullUrl = new URL(href, window.location.href).href;
+                    }
+                    
+                    const url = new URL(fullUrl);
+                    if (url.origin !== window.location.origin) {
+                        return;
+                    }
+                } catch (e) {
+                    return;
+                }
+                
+                
+                if (window.location.pathname === href || window.location.href === href) {
+                    e.preventDefault();
+                    return;
+                }
+                
+                e.preventDefault();
+                
+                
+                isTransitioning = true;
+                
+                
+                if (!document.startViewTransition) {
+                    isTransitioning = false;
+                    window.location.href = href;
+                    return;
+                }
+
+                try {
+                    const transition = document.startViewTransition(async () => {
+                        try {
+                            
+                            await new Promise(resolve => setTimeout(resolve, 10));
+                            
+                            
+                            const response = await fetch(href, {
+                                headers: {
+                                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+                                }
+                            });
+                            if (!response.ok) {
+                                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                            }
+                            
+                            const html = await response.text();
+                            const parser = new DOMParser();
+                            const newDoc = parser.parseFromString(html, 'text/html');
+                            
+                            
+                            document.title = newDoc.title;
+                            
+                            
+                            const newMainContent = newDoc.querySelector('#main-content');
+                            const currentMainContent = document.querySelector('#main-content');
+                            
+                            if (newMainContent && currentMainContent) {
+                                
+                                currentMainContent.innerHTML = '';
+                                
+                                
+                                currentMainContent.innerHTML = newMainContent.innerHTML;
+                            } else {
+                                throw new Error('Main content elements not found');
+                            }
+                            
+                            
+                            window.history.pushState({}, '', href);
+                            
+                            
+                            await new Promise(resolve => setTimeout(resolve, 50));
+                            
+                            
+                            setupSidebar();
+                            
+                            
+                            if (typeof setupCopyButtons === 'function') {
+                                setupCopyButtons();
+                            }
+                        } catch (error) {
+                            console.error('View transition failed:', error);
+                            throw error;
+                        }
+                    });
+                    
+                    
+                    transition.finished.then(() => {
+                        isTransitioning = false;
+                    }).catch((error) => {
+                        console.error('View transition error:', error);
+                        isTransitioning = false;
+                    });
+                    
+                    
+                    setTimeout(() => {
+                        if (isTransitioning) {
+                            isTransitioning = false;
+                        }
+                    }, 5000);
+                    
+                } catch (error) {
+                    console.error('View transition failed:', error);
+                    isTransitioning = false;
+                    
+                    window.location.href = href;
+                }
+            });
+
+            
+            window.addEventListener('popstate', async (e) => {
+                if (isTransitioning) {
+                    return;
+                }
+                
+                if (!document.startViewTransition) {
+                    return;
+                }
+
+                isTransitioning = true;
+
+                try {
+                    const transition = document.startViewTransition(async () => {
+                        try {
+                            await new Promise(resolve => setTimeout(resolve, 10));
+                            
+                            const response = await fetch(window.location.href, {
+                                headers: {
+                                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+                                }
+                            });
+                            if (!response.ok) {
+                                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                            }
+                            
+                            const html = await response.text();
+                            const parser = new DOMParser();
+                            const newDoc = parser.parseFromString(html, 'text/html');
+                            
+                            document.title = newDoc.title;
+                            
+                            const newMainContent = newDoc.querySelector('#main-content');
+                            const currentMainContent = document.querySelector('#main-content');
+                            
+                            if (newMainContent && currentMainContent) {
+                                currentMainContent.innerHTML = '';
+                                currentMainContent.innerHTML = newMainContent.innerHTML;
+                            }
+                            
+                            await new Promise(resolve => setTimeout(resolve, 50));
+                            
+                            setupSidebar();
+                            
+                            
+                            if (typeof setupCopyButtons === 'function') {
+                                setupCopyButtons();
+                            }
+                        } catch (error) {
+                            console.error('Popstate view transition failed:', error);
+                            throw error;
+                        }
+                    });
+                    
+                    transition.finished.then(() => {
+                        isTransitioning = false;
+                    }).catch((error) => {
+                        console.error('Popstate view transition failed:', error);
+                        isTransitioning = false;
+                        window.location.reload();
+                    });
+                    
+                } catch (error) {
+                    console.error('Popstate view transition failed:', error);
+                    isTransitioning = false;
+                    window.location.reload();
+                }
+            });
+        }
+
+        
         const handleSidebarToggleClick = () => {
             const sidebar = document.getElementById("sidebar");
             const overlay = document.getElementById("sidebar-overlay");
@@ -1117,7 +1348,11 @@
         
         if (typeof document !== 'undefined') {
             setupSidebar();
-            document.addEventListener('DOMContentLoaded', setupSidebar);
+            enableViewTransitions();
+            document.addEventListener('DOMContentLoaded', () => {
+                setupSidebar();
+                enableViewTransitions();
+            });
         }
     </script>
 </body>

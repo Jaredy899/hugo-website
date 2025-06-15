@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="description" content="Personal website of Jared Cervantes" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="view-transition" content="same-origin" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content="" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +99,13 @@
                 "Liberation Mono",
                 "Courier New",
                 monospace;
+        }
+
+         
+        @supports (view-transition-name: none) {
+            .jc-logo-transition {
+                view-transition-name: jc-logo;
+            }
         }
 
          
@@ -648,12 +656,12 @@
     <main id="main-content">
         
 <main class="container mx-auto px-4 py-8">
-    <div class="logo-container">
+    <div class="logo-container jc-logo-transition">
         <a href="/" class="logo-link" aria-label="Return to home page">
             <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="-50 -50 700 519"
-    class="jc-logo"
+    class="jc-logo jc-logo-transition"
 >
     <g>
         <path
@@ -1043,33 +1051,41 @@ that, in itself, is part of the fun.</p>
         font-size: 0.9em;
     }
 
-    .blog-content pre {
-        background: #1a1a1a;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        overflow-x: auto;
-        margin: 0.25rem 0;
-        position: relative;
+    .blog-content .code-block-wrapper {
+        position: relative !important;
+        margin: 0.25rem 0 !important;
     }
 
+    .blog-content .code-block-wrapper pre,
+    .blog-content pre {
+        margin: 0 !important;
+        padding: 0.5rem !important;
+        background: #1a1a1a !important;
+        border-radius: 0.5rem !important;
+        overflow-x: auto !important;
+        position: relative !important;
+    }
+
+    .blog-content .code-block-wrapper pre code,
     .blog-content pre code {
-        background: none;
-        padding: 0;
-        color: #fff;
-        display: block;
+        background: none !important;
+        padding: 0 !important;
+        color: #fff !important;
+        display: block !important;
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
                      Consolas, "Liberation Mono", "Courier New",
-                     monospace;
-        font-size: 0.875rem;
-        line-height: 1.4;
+                     monospace !important;
+        font-size: 0.875rem !important;
+        line-height: 1.4 !important;
     }
 
     :root.dark .blog-content code {
         background: rgba(255, 255, 255, 0.1);
     }
 
+    :root.dark .blog-content .code-block-wrapper pre,
     :root.dark .blog-content pre {
-        background: #1a1a1a;
+        background: #1a1a1a !important;
     }
 
     :root.dark .blog-title {
@@ -1083,51 +1099,51 @@ that, in itself, is part of the fun.</p>
 
 
      
-    .copy-code-button {
-        position: absolute;
-        top: 0.25rem;
-        right: 0.25rem;
-        padding: 0.3rem;
-        background: transparent;
-        border: none;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        color: #8b949e;
-        transition: background 0.2s ease, color 0.2s ease;
-        line-height: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .blog-content .copy-code-button {
+        position: absolute !important;
+        top: 0.25rem !important;
+        right: 0.25rem !important;
+        padding: 0.3rem !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0.25rem !important;
+        cursor: pointer !important;
+        color: #8b949e !important;
+        transition: background 0.2s ease, color 0.2s ease !important;
+        line-height: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
-    .copy-code-button:hover {
-        background: rgba(110, 118, 129, 0.1);
-        color: #c9d1d9;
+    .blog-content .copy-code-button:hover {
+        background: rgba(110, 118, 129, 0.1) !important;
+        color: #c9d1d9 !important;
     }
 
-    .copy-code-button.copied {
-        background: rgba(46, 164, 79, 0.1);
-        color: #2ea44f;
+    .blog-content .copy-code-button.copied {
+        background: rgba(46, 164, 79, 0.1) !important;
+        color: #2ea44f !important;
     }
 
-    .copy-code-button svg {
-        width: 1.25rem;
-        height: 1.25rem;
-        stroke: currentColor;
-        fill: none;
+    .blog-content .copy-code-button svg {
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+        stroke: currentColor !important;
+        fill: none !important;
     }
 
-    .copy-code-button .btn-text {
-        margin-left: 0.3rem;
-        font-size: 0.75rem;
+    .blog-content .copy-code-button .btn-text {
+        margin-left: 0.3rem !important;
+        font-size: 0.75rem !important;
     }
 
-    :root.dark .copy-code-button:hover {
-        background: rgba(110, 118, 129, 0.2);
+    :root.dark .blog-content .copy-code-button:hover {
+        background: rgba(110, 118, 129, 0.2) !important;
     }
 
-    :root.dark .copy-code-button.copied {
-        background: rgba(46, 164, 79, 0.2);
+    :root.dark .blog-content .copy-code-button.copied {
+        background: rgba(46, 164, 79, 0.2) !important;
     }
 
     .blog-content a {
@@ -1295,6 +1311,37 @@ that, in itself, is part of the fun.</p>
     
     <script>
         
+        function enableViewTransitions() {
+            
+            if (!document.startViewTransition) {
+                return;
+            }
+
+            
+            document.addEventListener('click', (e) => {
+                const link = e.target.closest('a');
+                if (!link) return;
+                
+                const href = link.getAttribute('href');
+                if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank') {
+                    return;
+                }
+                
+                
+                const url = new URL(href, window.location.origin);
+                if (url.origin !== window.location.origin) {
+                    return;
+                }
+                
+                e.preventDefault();
+                
+                document.startViewTransition(() => {
+                    window.location.href = href;
+                });
+            });
+        }
+
+        
         const handleSidebarToggleClick = () => {
             const sidebar = document.getElementById("sidebar");
             const overlay = document.getElementById("sidebar-overlay");
@@ -1339,7 +1386,11 @@ that, in itself, is part of the fun.</p>
         
         if (typeof document !== 'undefined') {
             setupSidebar();
-            document.addEventListener('DOMContentLoaded', setupSidebar);
+            enableViewTransitions();
+            document.addEventListener('DOMContentLoaded', () => {
+                setupSidebar();
+                enableViewTransitions();
+            });
         }
     </script>
 </body>

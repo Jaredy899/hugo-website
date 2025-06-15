@@ -2,7 +2,7 @@
 title: "My Mac Setup"
 description: "How I setup my Macbook"
 pubDate: 2025-07-13
-draft: false
+draft: true
 ---
 
 ## My Personal Mac Setup
