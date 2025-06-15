@@ -2,7 +2,7 @@
 title: "My Linux Configuration"
 description: "How I configure different linux Distributions"
 pubDate: 2025-07-27
-draft: true
+draft: false
 ---
 
 # Jared's Linux Installs: Automating Your Linux Setup

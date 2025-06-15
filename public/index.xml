@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jared Cervantes</title>
-    <link>http://localhost:1314/</link>
+    <link>http://localhost:61411/</link>
     <description>Recent content on Jared Cervantes</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 15 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1314/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:61411/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Formula 1</title>
-      <link>http://localhost:1314/blog/5-f1/</link>
+      <link>http://localhost:61411/blog/5-f1/</link>
       <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1314/blog/5-f1/</guid>
+      <guid>http://localhost:61411/blog/5-f1/</guid>
       <description>&lt;h1 id=&#34;-my-love-affair-with-formula-1-from-austin-to-the-world-&#34;&gt;🏁 My Love Affair with Formula 1: From Austin to the World 🌎&lt;/h1&gt;&#xA;&lt;p&gt;I still remember the electric buzz in the air as I walked into the Circuit of the Americas in Austin, Texas, for my very first Formula 1 race—the 2012 United States Grand Prix. It wasn&amp;rsquo;t just my first race in person; it was the first F1 race I&amp;rsquo;d ever watched, period. The city was alive with excitement, and you could feel the collective anticipation. After a long absence, F1 was finally back in the US, and I was lucky enough to be there for its triumphant return. 🇺🇸&lt;/p&gt;</description>
     </item>
     <item>
       <title>Early Episode Psychosis</title>
-      <link>http://localhost:1314/blog/4-eap/</link>
+      <link>http://localhost:61411/blog/4-eap/</link>
       <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1314/blog/4-eap/</guid>
+      <guid>http://localhost:61411/blog/4-eap/</guid>
       <description>&lt;h1 id=&#34;early-psychosis-care-insights-from-missouri&#34;&gt;Early Psychosis Care: Insights from Missouri&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;A deep dive into the critical importance of early identification and intervention in psychosis, based on insights from the Early Psychosis Care Center Conference in Missouri.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.navigateconsultants.org/&#34;&gt;&lt;img src=&#34;https://qmpdliftraf4pov3.public.blob.vercel-storage.com/navigate-logo-p44GGnDVq4MIDtJidT6EGNrzfS4mUc.webp&#34; alt=&#34;Navigate&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;I recently had the opportunity to attend the Early Psychosis Care Center Conference in Missouri, an event focused on the critical importance of early identification and intervention in psychosis. As someone who works in a program called &lt;a href=&#34;https://www.navigateconsultants.org/&#34;&gt;Navigate&lt;/a&gt;, dedicated to early psychosis care, attending this conference was particularly valuable. The conference brought together a diverse group of professionals, individuals with lived experience, and family members, all dedicated to improving care for those affected by psychosis. It was an incredibly insightful experience, highlighting key areas for enhancing support and treatment. You can learn more about the conference at &lt;a href=&#34;https://www.epcmissouri.org/&#34;&gt;EPCMissouri.org&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>My Windows Setup</title>
-      <link>http://localhost:1314/blog/3-windows-setup/</link>
+      <link>http://localhost:61411/blog/3-windows-setup/</link>
       <pubDate>Mon, 02 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1314/blog/3-windows-setup/</guid>
+      <guid>http://localhost:61411/blog/3-windows-setup/</guid>
       <description>&lt;h1 id=&#34;-my-windows-setup&#34;&gt;🖥️ My Windows Setup&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://avatars.githubusercontent.com/u/6154722?s=100&amp;amp;v=4&#34; alt=&#34;Windows&#34;&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;This is how I set up my Windows machine quickly with all my presets and things how I like it.&lt;/p&gt;&#xA;&lt;h2 id=&#34;windows-script&#34;&gt;&lt;a href=&#34;https://github.com/Jaredy899/win&#34;&gt;Windows Script&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;I created a powershell script to install my tweaks. It uses a GitHub Repo so I can install on any machine. Below is how I use it and what it does.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://qmpdliftraf4pov3.public.blob.vercel-storage.com/Jared%20Winutil-bq8y8Y2LYpMMfJYzLSyg7qRMr5KcNx.webp&#34; alt=&#34;Script&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;-installation&#34;&gt;🚀 Installation&lt;/h2&gt;&#xA;&lt;p&gt;To get started, open PowerShell as Administrator and run:&lt;/p&gt;</description>
     </item>
     <item>
       <title>Captain Picard</title>
-      <link>http://localhost:1314/blog/2-star-trek/</link>
+      <link>http://localhost:61411/blog/2-star-trek/</link>
       <pubDate>Sun, 25 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1314/blog/2-star-trek/</guid>
+      <guid>http://localhost:61411/blog/2-star-trek/</guid>
       <description>&lt;h2 id=&#34;make-it-so-how-picard-shaped-my-worldview&#34;&gt;Make it So: How Picard Shaped My Worldview&lt;/h2&gt;&#xA;&lt;p&gt;Captain Jean-Luc Picard. More than just a Starfleet captain, he was a scholar, a diplomat, a philosopher. His blend of intellect and integrity profoundly shaped my view of the world.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://qmpdliftraf4pov3.public.blob.vercel-storage.com/Picard-9oKK4setvPF2l6ZsG5OvLRbEuYYcEb.webp&#34; alt=&#34;Captain Jean-Luc Picard&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Here are some key ways Captain Picard has influenced my thinking:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Understanding Diverse Perspectives:&lt;/strong&gt; Picard constantly championed dialogue over conflict, even with formidable adversaries like the &lt;a href=&#34;https://memory-alpha.fandom.com/wiki/Borg&#34;&gt;Borg&lt;/a&gt;. His traumatic experience as &lt;a href=&#34;https://memory-alpha.fandom.com/wiki/Locutus_of_Borg&#34;&gt;Locutus of Borg&lt;/a&gt; (see &lt;a href=&#34;https://memory-alpha.fandom.com/wiki/The_Best_of_Both_Worlds,_Part_I_(episode)&#34;&gt;&amp;ldquo;The Best of Both Worlds, Part I&amp;rdquo;&lt;/a&gt; and &lt;a href=&#34;https://memory-alpha.fandom.com/wiki/The_Best_of_Both_Worlds,_Part_II_(episode)&#34;&gt;&amp;ldquo;Part II&amp;rdquo;&lt;/a&gt;) underscored the importance of seeking deeper understanding. &lt;a href=&#34;https://memory-alpha.fandom.com/wiki/Memory_Alpha&#34;&gt;Memory Alpha&lt;/a&gt; details numerous instances of his successful diplomacy.&lt;/p&gt;</description>
     </item>
     <item>
       <title>My First Post</title>
-      <link>http://localhost:1314/blog/1-first-post/</link>
+      <link>http://localhost:61411/blog/1-first-post/</link>
       <pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1314/blog/1-first-post/</guid>
+      <guid>http://localhost:61411/blog/1-first-post/</guid>
       <description>&lt;h1 id=&#34;welcome-to-my-blog&#34;&gt;Welcome to My Blog&lt;/h1&gt;&#xA;&lt;p&gt;This is going to be my thoughts on anything and everything. It&amp;rsquo;s mainly a way of playing with website building.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;💻 Building websites&lt;/li&gt;&#xA;&lt;li&gt;🖖🏽 Star Trek&lt;/li&gt;&#xA;&lt;li&gt;✈️ Airplanes&lt;/li&gt;&#xA;&lt;li&gt;🧠 Mental Health&lt;/li&gt;&#xA;&lt;li&gt;📰 Politics&lt;/li&gt;&#xA;&lt;li&gt;🎹 Music&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;I built this website using &lt;a href=&#34;https://astro.build/&#34;&gt;Astro&lt;/a&gt; and &lt;a href=&#34;https://docs.astro.build/en/guides/view-transitions/&#34;&gt;View Transitions&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;This post itself is written in Markdown.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-i-used-to-build-this-blog&#34;&gt;What I Used to Build This Blog&lt;/h2&gt;&#xA;&lt;p&gt;Here are some of the key ingredients that went into making this blog:&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,7 +2,7 @@
 title: "The Endless Quest for the Perfect Browser: A Chronicle"
 description: "My ongoing search for the ideal web browser."
 pubDate: 2025-08-10
-draft: true
+draft: false
 ---
 
 ## The Endless Quest for the Perfect Browser: A Chronicle
@@ -113,7 +113,7 @@ allows me to test and preview these features is a game-changer.
 
 The frustrating part, however, is that **View Transitions are not enabled by
 default in Zen**. It's the same story with Firefox, which also supports them but
-requires a trip into the **<mark style={{backgroundColor: 'white'}}>`about:config`</mark>**
+requires a trip into the **<mark style="background-color: white;">`about:config`</mark>**
 settings to flip a flag. While I'm grateful that the capability exists, it's an
 annoying extra step that I wish wasn't necessary. It's incredibly satisfying to
 see my website come alive exactly as intended, without any jarring jumps or

@@ -2,7 +2,7 @@
 title: "Coding to Help My Job"
 description: "Using AI to create a website to assist my work in mental health"
 pubDate: 2025-08-03
-draft: true
+draft: false
 ---
 
 ## Revolutionizing Case Management: How Convex Chef and Cursor Helped Me Build a Custom Client Tracker

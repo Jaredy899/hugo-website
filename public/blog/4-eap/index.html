@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=61411&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8" />
     <meta name="description" content="Personal website of Jared Cervantes" />
     <meta name="viewport" content="width=device-width" />
@@ -838,28 +838,41 @@
         font-size: 0.9em;
     }
 
-    .blog-content pre {
-        background: #1a1a1a;
-        padding: 1rem;
-        border-radius: 8px;
-        overflow-x: auto;
-        margin: 1.5rem 0;
-        position: relative;
+    .blog-content .code-block-wrapper {
+        position: relative !important;
+        margin: 0.25rem 0 !important;
     }
 
+    .blog-content .code-block-wrapper pre,
+    .blog-content pre {
+        margin: 0 !important;
+        padding: 0.5rem !important;
+        background: #1a1a1a !important;
+        border-radius: 0.5rem !important;
+        overflow-x: auto !important;
+        position: relative !important;
+    }
+
+    .blog-content .code-block-wrapper pre code,
     .blog-content pre code {
-        background: none;
-        padding: 0;
-        color: #fff;
-        display: block;
+        background: none !important;
+        padding: 0 !important;
+        color: #fff !important;
+        display: block !important;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+                     Consolas, "Liberation Mono", "Courier New",
+                     monospace !important;
+        font-size: 0.875rem !important;
+        line-height: 1.4 !important;
     }
 
     :root.dark .blog-content code {
         background: rgba(255, 255, 255, 0.1);
     }
 
+    :root.dark .blog-content .code-block-wrapper pre,
     :root.dark .blog-content pre {
-        background: #2a2a2a;
+        background: #1a1a1a !important;
     }
 
     :root.dark .blog-title {
@@ -873,45 +886,51 @@
 
 
      
-    .copy-code-button {
-        position: absolute;
-        top: 0.5rem;
-        right: 0.5rem;
-        padding: 0.5rem;
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        color: #fff;
-        transition: all 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .blog-content .copy-code-button {
+        position: absolute !important;
+        top: 0.25rem !important;
+        right: 0.25rem !important;
+        padding: 0.3rem !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0.25rem !important;
+        cursor: pointer !important;
+        color: #8b949e !important;
+        transition: background 0.2s ease, color 0.2s ease !important;
+        line-height: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
-    .copy-code-button:hover {
-        background: rgba(255, 255, 255, 0.2);
+    .blog-content .copy-code-button:hover {
+        background: rgba(110, 118, 129, 0.1) !important;
+        color: #c9d1d9 !important;
     }
 
-    .copy-code-button.copied {
-        background: rgba(0, 255, 0, 0.2);
+    .blog-content .copy-code-button.copied {
+        background: rgba(46, 164, 79, 0.1) !important;
+        color: #2ea44f !important;
     }
 
-    .copy-code-button svg {
-        width: 1rem;
-        height: 1rem;
+    .blog-content .copy-code-button svg {
+        width: 1.25rem !important;
+        height: 1.25rem !important;
+        stroke: currentColor !important;
+        fill: none !important;
     }
 
-    :root.dark .copy-code-button {
-        background: rgba(255, 255, 255, 0.1);
+    .blog-content .copy-code-button .btn-text {
+        margin-left: 0.3rem !important;
+        font-size: 0.75rem !important;
     }
 
-    :root.dark .copy-code-button:hover {
-        background: rgba(255, 255, 255, 0.2);
+    :root.dark .blog-content .copy-code-button:hover {
+        background: rgba(110, 118, 129, 0.2) !important;
     }
 
-    :root.dark .copy-code-button.copied {
-        background: rgba(0, 255, 0, 0.2);
+    :root.dark .blog-content .copy-code-button.copied {
+        background: rgba(46, 164, 79, 0.2) !important;
     }
 
     .blog-content a {
