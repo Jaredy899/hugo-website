@@ -88,6 +88,7 @@
 </script>
 
 <style>
+    /* Sidebar Overlay */
     .sidebar-overlay {
         position: fixed;
         top: 0;
@@ -106,6 +107,7 @@
         visibility: visible;
     }
 
+    /* Main Sidebar Container */
     .blog-sidebar {
         position: fixed;
         top: 0;
@@ -118,19 +120,27 @@
         transition: transform 0.3s ease;
         overflow-y: auto;
         z-index: 1001;
+        /* Ensure consistent box model */
+        box-sizing: border-box;
     }
 
     .blog-sidebar.open {
         transform: translateX(0);
     }
 
+    /* Sidebar Header */
     .sidebar-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        /* Fixed padding to ensure consistency */
         padding: 1.5rem;
-        padding-left: 4rem; /* Add extra padding to avoid overlap with toggle button */
+        padding-left: 4rem; /* Extra padding to avoid overlap with toggle button */
         border-bottom: 1px solid var(--text);
+        /* Ensure consistent box model */
+        box-sizing: border-box;
+        /* Prevent shrinking */
+        flex-shrink: 0;
     }
 
     .sidebar-header h2 {
@@ -138,8 +148,10 @@
         color: var(--text);
         font-size: 1.5rem;
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-weight: 600;
     }
 
+    /* Close Button */
     .close-btn {
         background: none;
         border: none;
@@ -150,75 +162,112 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 4px;
+        /* Ensure consistent sizing */
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
     }
 
     .close-btn:hover {
         opacity: 0.7;
+        background-color: rgba(128, 128, 128, 0.1);
     }
 
+    /* Sidebar Content */
     .sidebar-content {
+        /* Fixed padding for consistency */
         padding: 1.5rem;
+        box-sizing: border-box;
+        /* Allow content to grow and scroll */
+        flex: 1;
+        overflow-y: auto;
     }
 
+    /* No Posts Message */
     .no-posts {
         text-align: center;
         color: var(--text);
-        padding: 2rem;
+        padding: 2rem 0;
         opacity: 0.7;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
 
+    /* Posts List */
     .posts-list {
         list-style: none;
         padding: 0;
         margin: 0;
         display: flex;
         flex-direction: column;
+        gap: 0.75rem; /* Consistent spacing between items */
     }
 
     .posts-list li {
-        margin-bottom: 1rem;
+        margin: 0; /* Remove margin, use gap instead */
     }
 
+    /* Post Links */
     .post-link {
         display: block;
         text-decoration: none;
         color: var(--text);
+        /* Fixed padding for consistency */
         padding: 1rem;
         border: 1px solid transparent;
         border-radius: 8px;
         transition: all 0.2s ease;
-        background: none;
+        background: transparent;
         cursor: pointer;
         width: 100%;
         text-align: left;
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
         box-sizing: border-box;
+        /* Ensure consistent behavior */
+        position: relative;
+        overflow: hidden;
     }
 
+    /* Post Link Hover Effect */
     .post-link:hover {
         border-color: var(--text);
         background-color: rgba(128, 128, 128, 0.1);
+        /* Subtle transform for feedback */
+        transform: translateX(2px);
     }
 
+    /* Post Link Focus State */
+    .post-link:focus {
+        outline: 2px solid var(--link-color);
+        outline-offset: 2px;
+    }
+
+    /* Post Content */
     .post-title {
-        font-weight: bold;
+        font-weight: 600;
         font-size: 1.1rem;
         margin-bottom: 0.5rem;
         line-height: 1.3;
+        color: var(--text);
     }
 
     .post-date {
         font-size: 0.9rem;
         opacity: 0.7;
         margin-bottom: 0.5rem;
+        color: var(--text);
+        font-weight: 400;
     }
 
     .post-description {
         font-size: 0.95rem;
         opacity: 0.8;
         line-height: 1.4;
+        color: var(--text);
+        font-weight: 400;
     }
 
+    /* Mobile Responsive */
     @media (max-width: 768px) {
         .blog-sidebar {
             width: 100%;
@@ -226,6 +275,57 @@
         
         .sidebar-header {
             padding-left: 3.5rem; /* Slightly less padding on mobile */
+        }
+        
+        .sidebar-content {
+            padding: 1rem; /* Slightly less padding on mobile */
+        }
+        
+        .post-link {
+            padding: 0.875rem; /* Slightly less padding on mobile */
+        }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 480px) {
+        .sidebar-header {
+            padding: 1rem;
+            padding-left: 3rem;
+        }
+        
+        .sidebar-content {
+            padding: 0.75rem;
+        }
+        
+        .post-link {
+            padding: 0.75rem;
+        }
+    }
+
+    /* Ensure sidebar works with dark mode */
+    :root.dark .post-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+        .post-link {
+            border-color: var(--text);
+        }
+        
+        .post-link:hover {
+            background-color: var(--text);
+            color: var(--background);
+        }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        .blog-sidebar,
+        .sidebar-overlay,
+        .post-link,
+        .close-btn {
+            transition: none;
         }
     }
 </style> 
