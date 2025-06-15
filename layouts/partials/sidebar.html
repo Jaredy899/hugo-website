@@ -1,0 +1,231 @@
+{{ $posts := where site.RegularPages "Section" "blog" }}
+{{ $posts = $posts.ByDate.Reverse }}
+
+<div
+    id="sidebar-overlay"
+    class="sidebar-overlay"
+    aria-hidden="true"
+>
+    <aside id="sidebar" class="blog-sidebar" aria-label="Blog navigation">
+        <div class="sidebar-header">
+            <h2>Blog Posts</h2>
+            <button
+                class="close-btn"
+                id="sidebar-close-btn"
+                aria-label="Close sidebar"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            {{ if eq (len $posts) 0 }}
+                <div class="no-posts">No blog posts found ({{ len $posts }} posts)</div>
+            {{ else }}
+                <ul class="posts-list">
+                    {{ range $posts }}
+                        <li>
+                            <a 
+                                href="{{ .RelPermalink }}"
+                                class="post-link"
+                                aria-label="{{ .Title }} - Published on {{ .Date.Format "January 2, 2006" }}"
+                            >
+                                <div class="post-title">{{ .Title }}</div>
+                                <div class="post-date">{{ .Date.Format "January 2, 2006" }}</div>
+                                {{ if .Params.description }}
+                                    <div class="post-description">{{ .Params.description }}</div>
+                                {{ end }}
+                            </a>
+                        </li>
+                    {{ end }}
+                </ul>
+            {{ end }}
+        </div>
+    </aside>
+</div>
+
+<script>
+    // Handle sidebar functionality
+    function initSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const closeBtn = document.getElementById('sidebar-close-btn');
+
+        function closeSidebar() {
+            sidebar?.classList.remove('open');
+            overlay?.classList.remove('active');
+        }
+
+        // Close button click
+        closeBtn?.addEventListener('click', closeSidebar);
+
+        // Close sidebar when clicking on post links
+        const postLinks = sidebar?.querySelectorAll('.post-link');
+        postLinks?.forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+    }
+
+    // Initialize when DOM is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSidebar);
+    } else {
+        initSidebar();
+    }
+</script>
+
+<style>
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .blog-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 400px;
+        height: 100vh;
+        background-color: var(--background);
+        border-right: 1px solid var(--text);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        z-index: 1001;
+    }
+
+    .blog-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        padding-left: 4rem; /* Add extra padding to avoid overlap with toggle button */
+        border-bottom: 1px solid var(--text);
+    }
+
+    .sidebar-header h2 {
+        margin: 0;
+        color: var(--text);
+        font-size: 1.5rem;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    .close-btn {
+        background: none;
+        border: none;
+        color: var(--text);
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: opacity 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-btn:hover {
+        opacity: 0.7;
+    }
+
+    .sidebar-content {
+        padding: 1.5rem;
+    }
+
+    .no-posts {
+        text-align: center;
+        color: var(--text);
+        padding: 2rem;
+        opacity: 0.7;
+    }
+
+    .posts-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .posts-list li {
+        margin-bottom: 1rem;
+    }
+
+    .post-link {
+        display: block;
+        text-decoration: none;
+        color: var(--text);
+        padding: 1rem;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        background: none;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        box-sizing: border-box;
+    }
+
+    .post-link:hover {
+        border-color: var(--text);
+        background-color: rgba(128, 128, 128, 0.1);
+    }
+
+    .post-title {
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+
+    .post-date {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-bottom: 0.5rem;
+    }
+
+    .post-description {
+        font-size: 0.95rem;
+        opacity: 0.8;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+        .blog-sidebar {
+            width: 100%;
+        }
+        
+        .sidebar-header {
+            padding-left: 3.5rem; /* Slightly less padding on mobile */
+        }
+    }
+</style> 

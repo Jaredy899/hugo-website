@@ -1,0 +1,68 @@
+{{ $post := . }}
+<a href="{{ .RelPermalink }}" class="blog-card-link" aria-label="Read blog post: {{ .Title }}" tabindex="0">
+    <article class="blog-card">
+        <h2 class="blog-title">{{ .Title }}</h2>
+        <p class="blog-desc">{{ .Params.description }}</p>
+        <time class="blog-date">
+            {{ .Date.Format "January 2, 2006" }}
+        </time>
+    </article>
+</a>
+
+<style>
+.blog-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+    margin-bottom: 3rem;
+}
+
+.blog-card-link:hover {
+    transform: translateY(-2px);
+}
+
+.blog-card {
+    padding: 2rem 0;
+    background: transparent;
+    border-bottom: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.blog-card-link:hover .blog-card {
+    border-bottom-color: #9ca3af;
+}
+
+:root.dark .blog-card {
+    border-bottom: 1px solid #374151;
+}
+
+:root.dark .blog-card-link:hover .blog-card {
+    border-bottom-color: #6b7280;
+}
+
+.blog-title {
+    font-size: 2rem;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+.blog-desc {
+    color: var(--text);
+    opacity: 0.85;
+    font-size: 1.1rem;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin-bottom: 1.25rem;
+}
+
+.blog-date {
+    font-size: 0.95rem;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    opacity: 0.6;
+    letter-spacing: 0.04em;
+}
+</style> 

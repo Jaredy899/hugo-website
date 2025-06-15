@@ -1,0 +1,292 @@
+{{ define "main" }}
+<main class="container mx-auto px-4 py-8">
+    <div class="logo-container">
+        <a href="/" class="logo-link" aria-label="Return to home page">
+            {{ partial "jc-logo.html" . }}
+        </a>
+    </div>
+    <article class="prose dark:prose-invert mx-auto fade-in blog-post">
+        <time class="text-sm text-gray-500 dark:text-gray-400 blog-date">
+            {{ .Date.Format "January 2, 2006" }}
+        </time>
+        <div class="mt-8 blog-content">
+            {{ .Content }}
+        </div>
+    </article>
+</main>
+
+<script>
+    // Remove tabindex from pre elements and setup copy buttons
+    document.addEventListener('DOMContentLoaded', () => {
+        // Remove tabindex
+        document.querySelectorAll('pre').forEach(pre => {
+            pre.removeAttribute('tabindex');
+        });
+
+        // Setup copy buttons
+        document.querySelectorAll('.copy-code-button').forEach((button) => {
+            button.addEventListener('click', async () => {
+                const wrapper = button.parentElement;
+                const pre = wrapper?.querySelector('pre');
+                const codeBlock = pre?.querySelector('code');
+                
+                if (!codeBlock) {
+                    console.error('No code block found');
+                    return;
+                }
+
+                try {
+                    const text = codeBlock.textContent || '';
+                    await navigator.clipboard.writeText(text);
+                    
+                    // Store original button content
+                    const originalContent = button.innerHTML;
+                    
+                    // Show feedback
+                    button.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    `;
+                    button.classList.add('copied');
+                    
+                    // Restore original content after 2 seconds
+                    setTimeout(() => {
+                        button.innerHTML = originalContent;
+                        button.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .container {
+        max-width: 800px;
+    }
+
+    /* Add specific tablet and desktop adjustments */
+    @media screen and (min-width: 768px) and (max-width: 1280px) {
+      .container {
+        padding-left: 5rem !important; /* Add more padding on the left to account for sidebar */
+        padding-right: 2rem !important;
+      }
+
+      .blog-date {
+        margin-left: 0.5rem; /* Add some margin to the date */
+      }
+    }
+
+    .logo-container {
+        width: 40px;
+        height: 40px;
+        margin: 1rem auto;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--text) !important;
+    }
+
+    .logo-container svg {
+        color: var(--text) !important;
+    }
+
+    .logo-link {
+        display: block;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
+
+    .logo-link:hover {
+        transform: scale(1.1);
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .blog-post {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        line-height: 1.8;
+    }
+
+    .blog-title {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+
+    .blog-date {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .blog-content {
+        font-size: 1.1rem;
+    }
+
+    /* More assertive CSS for images within blog-content */
+    .blog-content img {
+        max-width: 100% !important; /* Use !important to potentially override other styles */
+        height: auto !important; /* Use !important */
+        display: block !important; /* Use !important */
+        margin: 1.5rem auto !important; /* Use !important */
+        box-sizing: border-box !important; /* Ensure padding/border calculations are standard */
+        object-fit: contain; /* Ensure the entire image is visible without stretching */
+        border-radius: 8px; /* Optional: Add rounded corners to the image */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    }
+
+    /* Optional: Specific styling for images in dark mode if needed */
+    :root.dark .blog-content img {
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+    }
+
+    .blog-content h1 {
+        font-family: 'Inter', sans-serif;
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+
+    .blog-content h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+
+    .blog-content p {
+        margin-bottom: 1.5rem;
+    }
+
+    .blog-content ul, .blog-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+    }
+
+    .blog-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    .blog-content code {
+        font-family: 'Fira Code', monospace;
+        background: rgba(0, 0, 0, 0.05);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+
+    .blog-content pre {
+        background: #1a1a1a;
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        position: relative;
+    }
+
+    .blog-content pre code {
+        background: none;
+        padding: 0;
+        color: #fff;
+        display: block;
+    }
+
+    :root.dark .blog-content code {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    :root.dark .blog-content pre {
+        background: #2a2a2a;
+    }
+
+    :root.dark .blog-title {
+        color: var(--text);
+    }
+
+    :root.dark .blog-content h1 {
+        color: var(--text);
+    }
+
+
+
+    /* Copy button styles */
+    .copy-code-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        color: #fff;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .copy-code-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .copy-code-button.copied {
+        background: rgba(0, 255, 0, 0.2);
+    }
+
+    .copy-code-button svg {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    :root.dark .copy-code-button {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    :root.dark .copy-code-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    :root.dark .copy-code-button.copied {
+        background: rgba(0, 255, 0, 0.2);
+    }
+
+    .blog-content a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .blog-content a:hover {
+        opacity: 0.8;
+    }
+</style>
+{{ end }} 

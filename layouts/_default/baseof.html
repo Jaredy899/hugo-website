@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="{{ .Site.Params.description }}" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content="{{ hugo.Generator }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <title>{{ if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}</title>
+    <meta name="title" content="{{ if .Title }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}" />
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+    
+    <style>
+        :root {
+            --accent: 136, 58, 234;
+            --accent-light: 255, 230, 255;
+            --accent-dark: 49, 10, 101;
+            --accent-gradient: linear-gradient(
+                45deg,
+                rgb(var(--accent)),
+                rgb(var(--accent-light)) 30%,
+                white 60%
+            );
+            --background: #ffffff;
+            --text: #333333;
+            --link-color: rgb(var(--accent));
+            --sidebar-width: 300px;
+            --content-max-width: 1000px;
+        }
+
+        :root.dark {
+            --background: #000000;
+            --text: #ffffff;
+            --link-color: #b794f4;
+        }
+
+        html {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--background);
+            background-size: 224px;
+            color: var(--text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: padding-left 0.3s ease;
+        }
+
+        body.sidebar-open {
+            padding-left: var(--sidebar-width);
+            overflow: hidden;
+        }
+
+        #main-content {
+            max-width: var(--content-max-width);
+            padding: 1rem;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        #sidebar-toggle {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.25rem;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1002;
+        }
+
+        #sidebar-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        code {
+            font-family:
+                'Fira Code',
+                ui-monospace,
+                SFMono-Regular,
+                Menlo,
+                Monaco,
+                Consolas,
+                "Liberation Mono",
+                "Courier New",
+                monospace;
+        }
+
+        /* Tablet and Mobile Overrides */
+        @media (max-width: 768px) {
+            body {
+                align-items: stretch;
+                justify-content: flex-start;
+                padding-left: 0 !important;
+            }
+
+            body.sidebar-open {
+                padding-left: 0 !important;
+                overflow: hidden;
+            }
+
+            #main-content {
+                max-width: none;
+                padding: 3rem 1rem 1rem 1rem;
+            }
+        }
+
+        /* Small Mobile Overrides */
+        @media (max-width: 480px) {
+            #sidebar-toggle {
+                top: 0.5rem;
+                left: 0.5rem;
+            }
+
+            #main-content {
+                padding: 3rem 0.5rem 0.5rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="sidebar-toggle" aria-label="Toggle sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill: none !important;">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor"></rect>
+            <line x1="8" y1="6" x2="8" y2="18" stroke="currentColor"></line>
+        </svg>
+    </button>
+    
+    {{ partial "sidebar.html" . }}
+    {{ partial "theme-toggle.html" . }}
+    
+    <main id="main-content">
+        {{ block "main" . }}{{ end }}
+    </main>
+    
+    {{ partial "copy-button-script.html" . }}
+    
+    <script>
+        // --------- SIDEBAR TOGGLE ---------
+        const handleSidebarToggleClick = () => {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebar-overlay");
+            
+            if (sidebar && overlay) {
+                const isOpen = sidebar.classList.contains('open');
+                
+                if (isOpen) {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('active');
+                } else {
+                    sidebar.classList.add('open');
+                    overlay.classList.add('active');
+                }
+            }
+        };
+
+        const handleOverlayClick = () => {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebar-overlay");
+            
+            if (sidebar && overlay) {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            }
+        };
+
+        const setupSidebar = () => {
+            const sidebarToggleButton = document.getElementById("sidebar-toggle");
+            const overlay = document.getElementById("sidebar-overlay");
+
+            if (sidebarToggleButton) {
+                sidebarToggleButton.removeEventListener("click", handleSidebarToggleClick);
+                sidebarToggleButton.addEventListener("click", handleSidebarToggleClick);
+            }
+            if (overlay) {
+                overlay.removeEventListener("click", handleOverlayClick);
+                overlay.addEventListener("click", handleOverlayClick);
+            }
+        };
+
+        // Run on initial load
+        if (typeof document !== 'undefined') {
+            setupSidebar();
+            document.addEventListener('DOMContentLoaded', setupSidebar);
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,52 @@
+baseURL = 'https://hugo.jaredcervantes.com'
+languageCode = 'en-us'
+title = 'Jared Cervantes'
+
+[params]
+  description = "Personal website of Jared Cervantes"
+  author = "Jared Cervantes"
+
+[frontmatter]
+  date = ["pubDate", "date"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github-dark"
+    lineNos = false
+    codeFences = true
+
+[menu]
+  [[menu.social]]
+    name = "Bluesky"
+    url = "https://bsky.app/profile/jaredcervantes.com"
+    weight = 1
+  [[menu.social]]
+    name = "GitHub"
+    url = "https://github.com/Jaredy899"
+    weight = 2
+  [[menu.social]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/jared-cervantes"
+    weight = 3
+
+# Redirects (these would need to be handled by your hosting provider)
+[server]
+  [[server.redirects]]
+    from = "/win"
+    to = "https://raw.githubusercontent.com/Jaredy899/win/main/first-setup.ps1"
+    status = 301
+  [[server.redirects]]
+    from = "/mac"
+    to = "https://raw.githubusercontent.com/Jaredy899/mac/main/setup.sh"
+    status = 301
+  [[server.redirects]]
+    from = "/linux"
+    to = "https://raw.githubusercontent.com/Jaredy899/linux/refs/heads/main/linux.sh"
+    status = 301
+  [[server.redirects]]
+    from = "/debian"
+    to = "https://raw.githubusercontent.com/Jaredy899/linux/refs/heads/main/config_changes/preseed.cfg"
+    status = 301

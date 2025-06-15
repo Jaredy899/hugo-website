@@ -1,0 +1,149 @@
+<script>
+  function setupCopyButtons() {
+    const codeBlocks = document.querySelectorAll("pre code");
+
+    codeBlocks.forEach((codeBlock) => {
+      let wrapper = codeBlock.parentElement;
+      if (!wrapper) return;
+
+      if (!wrapper.classList.contains("code-block-wrapper")) {
+        const newWrapper = document.createElement("div");
+        newWrapper.className = "code-block-wrapper";
+        wrapper.insertBefore(newWrapper, codeBlock);
+        newWrapper.appendChild(codeBlock);
+        wrapper = newWrapper;
+      }
+
+      if (!wrapper.querySelector(".copy-code-button")) {
+        const copySVG = `
+          <svg xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4
+                     a2 2 0 0 1 2-2h9
+                     a2 2 0 0 1 2 2v1"/>
+          </svg>`.trim();
+
+        const checkSVG = `
+          <svg xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>`.trim();
+
+        const btn = document.createElement("button");
+        btn.className = "copy-code-button";
+        btn.setAttribute("aria-label", "Copy code");
+        btn.innerHTML = copySVG;
+
+        btn.addEventListener("click", async () => {
+          try {
+            const text = codeBlock.textContent || "";
+            await navigator.clipboard.writeText(text);
+
+            const prev = btn.innerHTML;
+            btn.innerHTML = checkSVG + '<span class="btn-text">Copied!</span>';
+            btn.classList.add("copied");
+
+            setTimeout(() => {
+              btn.innerHTML = prev;
+              btn.classList.remove("copied");
+            }, 2000);
+          } catch (err) {
+            console.error("Failed to copy code:", err);
+          }
+        });
+
+        wrapper.appendChild(btn);
+      }
+    });
+  }
+
+  if (typeof document !== "undefined") {
+    setupCopyButtons();
+  }
+  document.addEventListener("DOMContentLoaded", setupCopyButtons);
+</script>
+
+<style>
+  .code-block-wrapper {
+    position: relative;
+    margin: 0.25rem 0;
+  }
+
+  .copy-code-button {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    padding: 0.3rem;
+    background: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    color: #8b949e;
+    transition: background 0.2s ease, color 0.2s ease;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .copy-code-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  .copy-code-button .btn-text {
+    margin-left: 0.3rem;
+    font-size: 0.75rem;
+  }
+
+  .copy-code-button:hover {
+    background: rgba(110, 118, 129, 0.1);
+    color: #c9d1d9;
+  }
+
+  .copy-code-button.copied {
+    background: rgba(46, 164, 79, 0.1);
+    color: #2ea44f;
+  }
+
+  .copy-code-button:focus {
+    outline: none;
+  }
+
+  pre {
+    margin: 0;
+    padding: 0.5rem;
+    background: #1a1a1a;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+                 Consolas, "Liberation Mono", "Courier New",
+                 monospace;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  /* Dark mode tweaks */
+  :root.dark .copy-code-button:hover {
+    background: rgba(110, 118, 129, 0.2);
+  }
+  :root.dark .copy-code-button.copied {
+    background: rgba(46, 164, 79, 0.2);
+  }
+</style> 

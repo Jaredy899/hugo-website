@@ -1,0 +1,1130 @@
+<!doctype html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Personal website of Jared Cervantes" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content="" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <title>Early Episode Psychosis | Jared Cervantes</title>
+    <meta name="title" content="Early Episode Psychosis | Jared Cervantes" />
+    <meta name="description" content="What I learned from my recent conference" />
+    
+    <style>
+        :root {
+            --accent: 136, 58, 234;
+            --accent-light: 255, 230, 255;
+            --accent-dark: 49, 10, 101;
+            --accent-gradient: linear-gradient(
+                45deg,
+                rgb(var(--accent)),
+                rgb(var(--accent-light)) 30%,
+                white 60%
+            );
+            --background: #ffffff;
+            --text: #333333;
+            --link-color: rgb(var(--accent));
+            --sidebar-width: 300px;
+            --content-max-width: 1000px;
+        }
+
+        :root.dark {
+            --background: #000000;
+            --text: #ffffff;
+            --link-color: #b794f4;
+        }
+
+        html {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--background);
+            background-size: 224px;
+            color: var(--text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: padding-left 0.3s ease;
+        }
+
+        body.sidebar-open {
+            padding-left: var(--sidebar-width);
+            overflow: hidden;
+        }
+
+        #main-content {
+            max-width: var(--content-max-width);
+            padding: 1rem;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        #sidebar-toggle {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.25rem;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1002;
+        }
+
+        #sidebar-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        code {
+            font-family:
+                'Fira Code',
+                ui-monospace,
+                SFMono-Regular,
+                Menlo,
+                Monaco,
+                Consolas,
+                "Liberation Mono",
+                "Courier New",
+                monospace;
+        }
+
+         
+        @media (max-width: 768px) {
+            body {
+                align-items: stretch;
+                justify-content: flex-start;
+                padding-left: 0 !important;
+            }
+
+            body.sidebar-open {
+                padding-left: 0 !important;
+                overflow: hidden;
+            }
+
+            #main-content {
+                max-width: none;
+                padding: 3rem 1rem 1rem 1rem;
+            }
+        }
+
+         
+        @media (max-width: 480px) {
+            #sidebar-toggle {
+                top: 0.5rem;
+                left: 0.5rem;
+            }
+
+            #main-content {
+                padding: 3rem 0.5rem 0.5rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="sidebar-toggle" aria-label="Toggle sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill: none !important;">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor"></rect>
+            <line x1="8" y1="6" x2="8" y2="18" stroke="currentColor"></line>
+        </svg>
+    </button>
+    
+    
+
+
+<div
+    id="sidebar-overlay"
+    class="sidebar-overlay"
+    aria-hidden="true"
+>
+    <aside id="sidebar" class="blog-sidebar" aria-label="Blog navigation">
+        <div class="sidebar-header">
+            <h2>Blog Posts</h2>
+            <button
+                class="close-btn"
+                id="sidebar-close-btn"
+                aria-label="Close sidebar"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            
+                <ul class="posts-list">
+                    
+                        <li>
+                            <a 
+                                href="/blog/5-f1/"
+                                class="post-link"
+                                aria-label="Formula 1 - Published on June 15, 2025"
+                            >
+                                <div class="post-title">Formula 1</div>
+                                <div class="post-date">June 15, 2025</div>
+                                
+                                    <div class="post-description">My love for F1</div>
+                                
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a 
+                                href="/blog/4-eap/"
+                                class="post-link"
+                                aria-label="Early Episode Psychosis - Published on June 8, 2025"
+                            >
+                                <div class="post-title">Early Episode Psychosis</div>
+                                <div class="post-date">June 8, 2025</div>
+                                
+                                    <div class="post-description">What I learned from my recent conference</div>
+                                
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a 
+                                href="/blog/3-windows-setup/"
+                                class="post-link"
+                                aria-label="My Windows Setup - Published on June 2, 2025"
+                            >
+                                <div class="post-title">My Windows Setup</div>
+                                <div class="post-date">June 2, 2025</div>
+                                
+                                    <div class="post-description">How I set up my Windows machine</div>
+                                
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a 
+                                href="/blog/2-star-trek/"
+                                class="post-link"
+                                aria-label="Captain Picard - Published on May 25, 2025"
+                            >
+                                <div class="post-title">Captain Picard</div>
+                                <div class="post-date">May 25, 2025</div>
+                                
+                                    <div class="post-description">My thoughts about Captain Picard.</div>
+                                
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a 
+                                href="/blog/1-first-post/"
+                                class="post-link"
+                                aria-label="My First Post - Published on May 19, 2025"
+                            >
+                                <div class="post-title">My First Post</div>
+                                <div class="post-date">May 19, 2025</div>
+                                
+                                    <div class="post-description">My first blog post! I built this blog using Astro and added cool view transitions.</div>
+                                
+                            </a>
+                        </li>
+                    
+                </ul>
+            
+        </div>
+    </aside>
+</div>
+
+<script>
+    
+    function initSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const closeBtn = document.getElementById('sidebar-close-btn');
+
+        function closeSidebar() {
+            sidebar?.classList.remove('open');
+            overlay?.classList.remove('active');
+        }
+
+        
+        closeBtn?.addEventListener('click', closeSidebar);
+
+        
+        const postLinks = sidebar?.querySelectorAll('.post-link');
+        postLinks?.forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+    }
+
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSidebar);
+    } else {
+        initSidebar();
+    }
+</script>
+
+<style>
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .blog-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 400px;
+        height: 100vh;
+        background-color: var(--background);
+        border-right: 1px solid var(--text);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        z-index: 1001;
+    }
+
+    .blog-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        padding-left: 4rem;  
+        border-bottom: 1px solid var(--text);
+    }
+
+    .sidebar-header h2 {
+        margin: 0;
+        color: var(--text);
+        font-size: 1.5rem;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    .close-btn {
+        background: none;
+        border: none;
+        color: var(--text);
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: opacity 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-btn:hover {
+        opacity: 0.7;
+    }
+
+    .sidebar-content {
+        padding: 1.5rem;
+    }
+
+    .no-posts {
+        text-align: center;
+        color: var(--text);
+        padding: 2rem;
+        opacity: 0.7;
+    }
+
+    .posts-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .posts-list li {
+        margin-bottom: 1rem;
+    }
+
+    .post-link {
+        display: block;
+        text-decoration: none;
+        color: var(--text);
+        padding: 1rem;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        background: none;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        box-sizing: border-box;
+    }
+
+    .post-link:hover {
+        border-color: var(--text);
+        background-color: rgba(128, 128, 128, 0.1);
+    }
+
+    .post-title {
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+
+    .post-date {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-bottom: 0.5rem;
+    }
+
+    .post-description {
+        font-size: 0.95rem;
+        opacity: 0.8;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+        .blog-sidebar {
+            width: 100%;
+        }
+        
+        .sidebar-header {
+            padding-left: 3.5rem;  
+        }
+    }
+</style> 
+    <button id="theme-toggle" aria-label="Toggle theme">
+    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+</button>
+
+<style>
+    #theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.25rem;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+        color: var(--text);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    #theme-toggle:hover {
+        transform: scale(1.1);
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+<script>
+    const handleThemeToggleClick = () => {
+        const element = document.documentElement;
+        element.classList.toggle("dark");
+        const isDark = element.classList.contains("dark");
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        }
+        document.getElementById('sun-icon')?.classList.toggle('hidden');
+        document.getElementById('moon-icon')?.classList.toggle('hidden');
+    };
+
+    const setupTheme = () => {
+        const currentTheme = (() => {
+            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                return localStorage.getItem('theme') || 'dark';
+            }
+            if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'dark'; 
+        })();
+
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        if (currentTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+            sunIcon?.classList.add('hidden');
+            moonIcon?.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.add('dark');
+            sunIcon?.classList.remove('hidden');
+            moonIcon?.classList.add('hidden');
+        }
+
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('theme', currentTheme);
+        }
+
+        const themeToggleButton = document.getElementById("theme-toggle");
+        if (themeToggleButton) {
+            themeToggleButton.removeEventListener("click", handleThemeToggleClick);
+            themeToggleButton.addEventListener("click", handleThemeToggleClick);
+        }
+    };
+
+    
+    if (typeof document !== 'undefined') {
+        setupTheme();
+        document.addEventListener('DOMContentLoaded', setupTheme);
+    }
+</script> 
+    
+    <main id="main-content">
+        
+<main class="container mx-auto px-4 py-8">
+    <div class="logo-container">
+        <a href="/" class="logo-link" aria-label="Return to home page">
+            <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="-50 -50 700 519"
+    class="jc-logo"
+>
+    <g>
+        <path
+            class="letter j"
+            aria-label="J"
+            d="M285 0H240V334.06C240 354.821 223.018 371.797 202.25 371.797H100V416.797H202.25C248.027 416.797 285 379.775 285 334.06V0Z"
+        />
+        <path
+            class="letter c"
+            aria-label="C"
+            d="M300 82.7372C300 37.0217 337.027 0 382.75 0H525V45H382.75C361.988 45 345.006 61.9759 345.006 82.7372V334.06C345.006 354.821 361.988 371.797 382.75 371.797H525V416.797H382.75C337.027 416.797 300 379.775 300 334.06V82.7372Z"
+        />
+    </g>
+</svg>
+
+<style>
+    svg {
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
+        display: block;
+    }
+    .letter {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: center;
+    }
+    .j {
+        transform: translateX(-5px);
+    }
+    .c {
+        transform: translateX(5px);
+    }
+    svg:hover .j {
+        transform: translateX(-15px) scale(1.2);
+    }
+    svg:hover .c {
+        transform: translateX(15px) scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+        svg:hover .j {
+            transform: translateX(-12px) scale(1.15);
+        }
+        svg:hover .c {
+            transform: translateX(12px) scale(1.15);
+        }
+    }
+</style> 
+        </a>
+    </div>
+    <article class="prose dark:prose-invert mx-auto fade-in blog-post">
+        <time class="text-sm text-gray-500 dark:text-gray-400 blog-date">
+            June 8, 2025
+        </time>
+        <div class="mt-8 blog-content">
+            <h1 id="early-psychosis-care-insights-from-missouri">Early Psychosis Care: Insights from Missouri</h1>
+<blockquote>
+<p>A deep dive into the critical importance of early identification and intervention in psychosis, based on insights from the Early Psychosis Care Center Conference in Missouri.</p></blockquote>
+<p><a href="https://www.navigateconsultants.org/"><img src="https://qmpdliftraf4pov3.public.blob.vercel-storage.com/navigate-logo-p44GGnDVq4MIDtJidT6EGNrzfS4mUc.webp" alt="Navigate"></a></p>
+<p>I recently had the opportunity to attend the Early Psychosis Care Center Conference in Missouri, an event focused on the critical importance of early identification and intervention in psychosis. As someone who works in a program called <a href="https://www.navigateconsultants.org/">Navigate</a>, dedicated to early psychosis care, attending this conference was particularly valuable. The conference brought together a diverse group of professionals, individuals with lived experience, and family members, all dedicated to improving care for those affected by psychosis. It was an incredibly insightful experience, highlighting key areas for enhancing support and treatment. You can learn more about the conference at <a href="https://www.epcmissouri.org/">EPCMissouri.org</a>.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<h3 id="1-the-power-of-lived-experience">1. The Power of Lived Experience</h3>
+<p>One of the most impactful presentations was by <strong><a href="https://www.patdeegan.com/">Dr. Pat Deegan</a></strong>. Dr. Deegan is a powerful voice in the mental health recovery movement, drawing from her own lived experience with a schizophrenia diagnosis as a teenager. Her work emphasizes the potential for recovery and empowerment for individuals with mental illness. Dr. Deegan&rsquo;s insights underscored the importance of seeing the person beyond the diagnosis and supporting their journey towards a meaningful life.</p>
+<h3 id="2-understanding-moral-agency">2. Understanding Moral Agency</h3>
+<p>Another concept that resonated deeply was <strong>Moral Agency</strong>, presented by <strong><a href="https://people.smu.edu/nmyers/">Dr. Neely Myers</a></strong>. Dr. Myers, a medical and psychological anthropologist, explores how experiencing psychosis can diminish moral agency, which she defines as:</p>
+<blockquote>
+<p>The freedom to aspire to and achieve a &ldquo;good life&rdquo; that allows for intimate relationships and being recognized as a good person within one&rsquo;s social context.</p></blockquote>
+<p>Her research highlights the importance of restoring this sense of agency in the recovery process and the need for &ldquo;peopled opportunities&rdquo; and social support for individuals to rebuild their lives.</p>
+<h3 id="3-the-vital-role-of-family-engagement">3. The Vital Role of Family Engagement</h3>
+<p>The conference strongly emphasized the crucial role of <strong>engaging families in psychosis care</strong>. This important presentation was given by <a href="https://www.seedsofhopebooks.com/"><strong>Dr. Michelle Sherman</strong></a>, highlights the significant impact of family involvement. Research shows that family involvement leads to better patient outcomes, including:</p>
+<ul>
+<li>Fewer relapses</li>
+<li>Reduced hospitalizations</li>
+<li>Better treatment adherence</li>
+<li>Improved communication with providers</li>
+</ul>
+<p>Educating families about psychosis and providing them with communication strategies, such as those based on motivational interviewing, can help decrease conflict and create a more supportive home environment.</p>
+<h3 id="4-medication-treatment-the-case-for-early-clozaril-and-long-acting-injectables">4. Medication Treatment: The Case for Early Clozaril and Long-Acting Injectables</h3>
+<p><strong>Medication treatment</strong> was a significant topic, with discussions including the <strong>early use of Clozaril</strong> and the importance of <strong>long-acting injectables (LAIs)</strong>. While Clozaril is known for its efficacy in treatment-resistant schizophrenia, there&rsquo;s often a delay in prescribing it. The idea presented was to consider starting Clozaril earlier, potentially after two failed trials of other first-line antipsychotic medications, particularly for young people who are still symptomatic. This approach aims to improve outcomes when initial treatments are not fully effective. Clozaril does require careful monitoring due to potential side effects, but for some individuals, it can be a critical step towards recovery.</p>
+<p>A particularly important discussion centered around <strong>long-acting injectables (LAIs)</strong>. As someone who strongly advocates for LAIs, I was pleased to see this topic receive significant attention. LAIs offer several crucial advantages in early psychosis treatment:</p>
+<ul>
+<li>
+<p><strong>Improved Adherence</strong>: LAIs eliminate the need for daily pill-taking, which can be challenging for anyone, especially young people experiencing their first episode of psychosis. This leads to more consistent medication levels in the body.</p>
+</li>
+<li>
+<p><strong>Better Outcomes</strong>: Studies show that LAIs are associated with lower relapse rates and fewer hospitalizations compared to oral medications. This is particularly important in early psychosis, where preventing relapse can significantly impact long-term recovery.</p>
+</li>
+<li>
+<p><strong>Reduced Burden</strong>: For families and caregivers, LAIs can reduce the stress of monitoring daily medication adherence. This allows everyone to focus more on recovery and less on medication management.</p>
+</li>
+<li>
+<p><strong>Early Intervention</strong>: Starting with LAIs early in treatment can establish a strong foundation for recovery. It&rsquo;s often easier to maintain a treatment regimen than to restart one after a relapse.</p>
+</li>
+</ul>
+<p>The conference highlighted that LAIs should be considered as a first-line treatment option, not just as a solution for non-adherence. This aligns with my experience and preference for LAIs in early psychosis care. The key is to present LAIs as a positive choice for better outcomes rather than a last resort.</p>
+<blockquote>
+<p>In a later blog, I&rsquo;ll explain more about the different Long Acting Injectables and their benefits.</p></blockquote>
+<h3 id="5-cannabis-and-psychosis-a-complex-relationship">5. Cannabis and Psychosis: A Complex Relationship</h3>
+<p>The complex relationship between <strong>cannabis and psychosis</strong> was also addressed. Research indicates that:</p>
+<ul>
+<li>Cannabis use, especially during adolescence, can be a risk factor for developing psychotic disorders</li>
+<li>It may worsen symptoms in those already experiencing psychosis</li>
+<li>High-potency cannabis products and regular use are particularly concerning</li>
+<li>While some individuals may use cannabis to cope with symptoms, studies suggest it can actually exacerbate paranoia and hallucinations</li>
+</ul>
+<p>This highlights the importance of discussing substance use in the context of early psychosis and providing education on the potential risks.</p>
+<h3 id="6-traumas-impact-on-psychosis">6. Trauma&rsquo;s Impact on Psychosis</h3>
+<p><a href="https://cpr.bu.edu/bio/kim-t-mueser-ph-d/"><strong>Dr. Kim Mueser, PhD</strong></a> delivered a compelling presentation on the significant influence of <strong>trauma on psychosis</strong>. His research and clinical experience provided strong evidence suggesting that:</p>
+<ul>
+<li>Trauma is a risk factor for the development of psychosis</li>
+<li>Individuals with a history of trauma may experience more severe symptoms and poorer outcomes</li>
+<li>Different types of trauma, particularly interpersonal violence and neglect, have been linked to an increased risk</li>
+<li>The cumulative effect of experiencing multiple types of trauma can significantly increase the likelihood of psychosis</li>
+</ul>
+<p>Dr. Mueser emphasized the critical need for trauma-informed care and integrated approaches that address both psychosis and trauma, highlighting how this dual focus can lead to better treatment outcomes.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Attending the Early Psychosis Care Center Conference in Missouri was an invaluable experience. It reinforced the importance of early intervention, highlighted the power of lived experience and moral agency in recovery, and emphasized the critical role of families. The discussions on medication, cannabis, and trauma provided crucial information for improving care and support for individuals experiencing early psychosis. The commitment and passion of everyone at the conference were truly inspiring, offering hope for better outcomes and a more supportive future for those affected by psychosis.</p>
+
+        </div>
+    </article>
+</main>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        document.querySelectorAll('pre').forEach(pre => {
+            pre.removeAttribute('tabindex');
+        });
+
+        
+        document.querySelectorAll('.copy-code-button').forEach((button) => {
+            button.addEventListener('click', async () => {
+                const wrapper = button.parentElement;
+                const pre = wrapper?.querySelector('pre');
+                const codeBlock = pre?.querySelector('code');
+                
+                if (!codeBlock) {
+                    console.error('No code block found');
+                    return;
+                }
+
+                try {
+                    const text = codeBlock.textContent || '';
+                    await navigator.clipboard.writeText(text);
+                    
+                    
+                    const originalContent = button.innerHTML;
+                    
+                    
+                    button.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    `;
+                    button.classList.add('copied');
+                    
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalContent;
+                        button.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .container {
+        max-width: 800px;
+    }
+
+     
+    @media screen and (min-width: 768px) and (max-width: 1280px) {
+      .container {
+        padding-left: 5rem !important;  
+        padding-right: 2rem !important;
+      }
+
+      .blog-date {
+        margin-left: 0.5rem;  
+      }
+    }
+
+    .logo-container {
+        width: 40px;
+        height: 40px;
+        margin: 1rem auto;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--text) !important;
+    }
+
+    .logo-container svg {
+        color: var(--text) !important;
+    }
+
+    .logo-link {
+        display: block;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
+
+    .logo-link:hover {
+        transform: scale(1.1);
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .blog-post {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        line-height: 1.8;
+    }
+
+    .blog-title {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+
+    .blog-date {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .blog-content {
+        font-size: 1.1rem;
+    }
+
+     
+    .blog-content img {
+        max-width: 100% !important;  
+        height: auto !important;  
+        display: block !important;  
+        margin: 1.5rem auto !important;  
+        box-sizing: border-box !important;  
+        object-fit: contain;  
+        border-radius: 8px;  
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+    }
+
+     
+    :root.dark .blog-content img {
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+    }
+
+    .blog-content h1 {
+        font-family: 'Inter', sans-serif;
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+
+    .blog-content h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+
+    .blog-content p {
+        margin-bottom: 1.5rem;
+    }
+
+    .blog-content ul, .blog-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+    }
+
+    .blog-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    .blog-content code {
+        font-family: 'Fira Code', monospace;
+        background: rgba(0, 0, 0, 0.05);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+
+    .blog-content pre {
+        background: #1a1a1a;
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        position: relative;
+    }
+
+    .blog-content pre code {
+        background: none;
+        padding: 0;
+        color: #fff;
+        display: block;
+    }
+
+    :root.dark .blog-content code {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    :root.dark .blog-content pre {
+        background: #2a2a2a;
+    }
+
+    :root.dark .blog-title {
+        color: var(--text);
+    }
+
+    :root.dark .blog-content h1 {
+        color: var(--text);
+    }
+
+
+
+     
+    .copy-code-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        color: #fff;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .copy-code-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .copy-code-button.copied {
+        background: rgba(0, 255, 0, 0.2);
+    }
+
+    .copy-code-button svg {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    :root.dark .copy-code-button {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    :root.dark .copy-code-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    :root.dark .copy-code-button.copied {
+        background: rgba(0, 255, 0, 0.2);
+    }
+
+    .blog-content a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .blog-content a:hover {
+        opacity: 0.8;
+    }
+</style>
+
+    </main>
+    
+    <script>
+  function setupCopyButtons() {
+    const codeBlocks = document.querySelectorAll("pre code");
+
+    codeBlocks.forEach((codeBlock) => {
+      let wrapper = codeBlock.parentElement;
+      if (!wrapper) return;
+
+      if (!wrapper.classList.contains("code-block-wrapper")) {
+        const newWrapper = document.createElement("div");
+        newWrapper.className = "code-block-wrapper";
+        wrapper.insertBefore(newWrapper, codeBlock);
+        newWrapper.appendChild(codeBlock);
+        wrapper = newWrapper;
+      }
+
+      if (!wrapper.querySelector(".copy-code-button")) {
+        const copySVG = `
+          <svg xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4
+                     a2 2 0 0 1 2-2h9
+                     a2 2 0 0 1 2 2v1"/>
+          </svg>`.trim();
+
+        const checkSVG = `
+          <svg xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>`.trim();
+
+        const btn = document.createElement("button");
+        btn.className = "copy-code-button";
+        btn.setAttribute("aria-label", "Copy code");
+        btn.innerHTML = copySVG;
+
+        btn.addEventListener("click", async () => {
+          try {
+            const text = codeBlock.textContent || "";
+            await navigator.clipboard.writeText(text);
+
+            const prev = btn.innerHTML;
+            btn.innerHTML = checkSVG + '<span class="btn-text">Copied!</span>';
+            btn.classList.add("copied");
+
+            setTimeout(() => {
+              btn.innerHTML = prev;
+              btn.classList.remove("copied");
+            }, 2000);
+          } catch (err) {
+            console.error("Failed to copy code:", err);
+          }
+        });
+
+        wrapper.appendChild(btn);
+      }
+    });
+  }
+
+  if (typeof document !== "undefined") {
+    setupCopyButtons();
+  }
+  document.addEventListener("DOMContentLoaded", setupCopyButtons);
+</script>
+
+<style>
+  .code-block-wrapper {
+    position: relative;
+    margin: 0.25rem 0;
+  }
+
+  .copy-code-button {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    padding: 0.3rem;
+    background: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    color: #8b949e;
+    transition: background 0.2s ease, color 0.2s ease;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .copy-code-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  .copy-code-button .btn-text {
+    margin-left: 0.3rem;
+    font-size: 0.75rem;
+  }
+
+  .copy-code-button:hover {
+    background: rgba(110, 118, 129, 0.1);
+    color: #c9d1d9;
+  }
+
+  .copy-code-button.copied {
+    background: rgba(46, 164, 79, 0.1);
+    color: #2ea44f;
+  }
+
+  .copy-code-button:focus {
+    outline: none;
+  }
+
+  pre {
+    margin: 0;
+    padding: 0.5rem;
+    background: #1a1a1a;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+                 Consolas, "Liberation Mono", "Courier New",
+                 monospace;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+   
+  :root.dark .copy-code-button:hover {
+    background: rgba(110, 118, 129, 0.2);
+  }
+  :root.dark .copy-code-button.copied {
+    background: rgba(46, 164, 79, 0.2);
+  }
+</style> 
+    
+    <script>
+        
+        const handleSidebarToggleClick = () => {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebar-overlay");
+            
+            if (sidebar && overlay) {
+                const isOpen = sidebar.classList.contains('open');
+                
+                if (isOpen) {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('active');
+                } else {
+                    sidebar.classList.add('open');
+                    overlay.classList.add('active');
+                }
+            }
+        };
+
+        const handleOverlayClick = () => {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebar-overlay");
+            
+            if (sidebar && overlay) {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            }
+        };
+
+        const setupSidebar = () => {
+            const sidebarToggleButton = document.getElementById("sidebar-toggle");
+            const overlay = document.getElementById("sidebar-overlay");
+
+            if (sidebarToggleButton) {
+                sidebarToggleButton.removeEventListener("click", handleSidebarToggleClick);
+                sidebarToggleButton.addEventListener("click", handleSidebarToggleClick);
+            }
+            if (overlay) {
+                overlay.removeEventListener("click", handleOverlayClick);
+                overlay.addEventListener("click", handleOverlayClick);
+            }
+        };
+
+        
+        if (typeof document !== 'undefined') {
+            setupSidebar();
+            document.addEventListener('DOMContentLoaded', setupSidebar);
+        }
+    </script>
+</body>
+</html> 

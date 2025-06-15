@@ -1,0 +1,1223 @@
+<!doctype html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1314&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Personal website of Jared Cervantes" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content="" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <title>The Endless Quest for the Perfect Browser: A Chronicle | Jared Cervantes</title>
+    <meta name="title" content="The Endless Quest for the Perfect Browser: A Chronicle | Jared Cervantes" />
+    <meta name="description" content="My ongoing search for the ideal web browser." />
+    
+    <style>
+        :root {
+            --accent: 136, 58, 234;
+            --accent-light: 255, 230, 255;
+            --accent-dark: 49, 10, 101;
+            --accent-gradient: linear-gradient(
+                45deg,
+                rgb(var(--accent)),
+                rgb(var(--accent-light)) 30%,
+                white 60%
+            );
+            --background: #ffffff;
+            --text: #333333;
+            --link-color: rgb(var(--accent));
+            --sidebar-width: 300px;
+            --content-max-width: 1000px;
+        }
+
+        :root.dark {
+            --background: #000000;
+            --text: #ffffff;
+            --link-color: #b794f4;
+        }
+
+        html {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--background);
+            background-size: 224px;
+            color: var(--text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: padding-left 0.3s ease;
+        }
+
+        body.sidebar-open {
+            padding-left: var(--sidebar-width);
+            overflow: hidden;
+        }
+
+        #main-content {
+            max-width: var(--content-max-width);
+            padding: 1rem;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        #sidebar-toggle {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.25rem;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 1002;
+        }
+
+        #sidebar-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        code {
+            font-family:
+                'Fira Code',
+                ui-monospace,
+                SFMono-Regular,
+                Menlo,
+                Monaco,
+                Consolas,
+                "Liberation Mono",
+                "Courier New",
+                monospace;
+        }
+
+         
+        @media (max-width: 768px) {
+            body {
+                align-items: stretch;
+                justify-content: flex-start;
+                padding-left: 0 !important;
+            }
+
+            body.sidebar-open {
+                padding-left: 0 !important;
+                overflow: hidden;
+            }
+
+            #main-content {
+                max-width: none;
+                padding: 3rem 1rem 1rem 1rem;
+            }
+        }
+
+         
+        @media (max-width: 480px) {
+            #sidebar-toggle {
+                top: 0.5rem;
+                left: 0.5rem;
+            }
+
+            #main-content {
+                padding: 3rem 0.5rem 0.5rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="sidebar-toggle" aria-label="Toggle sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill: none !important;">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor"></rect>
+            <line x1="8" y1="6" x2="8" y2="18" stroke="currentColor"></line>
+        </svg>
+    </button>
+    
+    
+
+
+<div
+    id="sidebar-overlay"
+    class="sidebar-overlay"
+    aria-hidden="true"
+>
+    <aside id="sidebar" class="blog-sidebar" aria-label="Blog navigation">
+        <div class="sidebar-header">
+            <h2>Blog Posts</h2>
+            <button
+                class="close-btn"
+                id="sidebar-close-btn"
+                aria-label="Close sidebar"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="sidebar-content">
+            
+                <ul class="posts-list">
+                    
+                        <li>
+                            <a 
+                                href="/blog/13-browsers/"
+                                class="post-link"
+                                aria-label="The Endless Quest for the Perfect Browser: A Chronicle - Published on August 10, 2025"
+                            >
+                                <div class="post-title">The Endless Quest for the Perfect Browser: A Chronicle</div>
+                                <div class="post-date">August 10, 2025</div>
+                                
+                                    <div class="post-description">My ongoing search for the ideal web browser.</div>
+                                
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a 
+                                href="/blog/5-f1/"
+                                class="post-link"
+                                aria-label="Formula 1 - Published on June 15, 2025"
+                            >
+                                <div class="post-title">Formula 1</div>
+                                <div class="post-date">June 15, 2025</div>
+                                
+                                    <div class="post-description">My love for F1</div>
+                                
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a 
+                                href="/blog/4-eap/"
+                                class="post-link"
+                                aria-label="Early Episode Psychosis - Published on June 8, 2025"
+                            >
+                                <div class="post-title">Early Episode Psychosis</div>
+                                <div class="post-date">June 8, 2025</div>
+                                
+                                    <div class="post-description">What I learned from my recent conference</div>
+                                
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a 
+                                href="/blog/3-windows-setup/"
+                                class="post-link"
+                                aria-label="My Windows Setup - Published on June 2, 2025"
+                            >
+                                <div class="post-title">My Windows Setup</div>
+                                <div class="post-date">June 2, 2025</div>
+                                
+                                    <div class="post-description">How I set up my Windows machine</div>
+                                
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a 
+                                href="/blog/2-star-trek/"
+                                class="post-link"
+                                aria-label="Captain Picard - Published on May 25, 2025"
+                            >
+                                <div class="post-title">Captain Picard</div>
+                                <div class="post-date">May 25, 2025</div>
+                                
+                                    <div class="post-description">My thoughts about Captain Picard.</div>
+                                
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a 
+                                href="/blog/1-first-post/"
+                                class="post-link"
+                                aria-label="My First Post - Published on May 19, 2025"
+                            >
+                                <div class="post-title">My First Post</div>
+                                <div class="post-date">May 19, 2025</div>
+                                
+                                    <div class="post-description">My first blog post! I built this blog using Astro and added cool view transitions.</div>
+                                
+                            </a>
+                        </li>
+                    
+                </ul>
+            
+        </div>
+    </aside>
+</div>
+
+<script>
+    
+    function initSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const closeBtn = document.getElementById('sidebar-close-btn');
+
+        function closeSidebar() {
+            sidebar?.classList.remove('open');
+            overlay?.classList.remove('active');
+        }
+
+        
+        closeBtn?.addEventListener('click', closeSidebar);
+
+        
+        const postLinks = sidebar?.querySelectorAll('.post-link');
+        postLinks?.forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+    }
+
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSidebar);
+    } else {
+        initSidebar();
+    }
+</script>
+
+<style>
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .blog-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 400px;
+        height: 100vh;
+        background-color: var(--background);
+        border-right: 1px solid var(--text);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        z-index: 1001;
+    }
+
+    .blog-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        padding-left: 4rem;  
+        border-bottom: 1px solid var(--text);
+    }
+
+    .sidebar-header h2 {
+        margin: 0;
+        color: var(--text);
+        font-size: 1.5rem;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    .close-btn {
+        background: none;
+        border: none;
+        color: var(--text);
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: opacity 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-btn:hover {
+        opacity: 0.7;
+    }
+
+    .sidebar-content {
+        padding: 1.5rem;
+    }
+
+    .no-posts {
+        text-align: center;
+        color: var(--text);
+        padding: 2rem;
+        opacity: 0.7;
+    }
+
+    .posts-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .posts-list li {
+        margin-bottom: 1rem;
+    }
+
+    .post-link {
+        display: block;
+        text-decoration: none;
+        color: var(--text);
+        padding: 1rem;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        background: none;
+        cursor: pointer;
+        width: 100%;
+        text-align: left;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        box-sizing: border-box;
+    }
+
+    .post-link:hover {
+        border-color: var(--text);
+        background-color: rgba(128, 128, 128, 0.1);
+    }
+
+    .post-title {
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+
+    .post-date {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-bottom: 0.5rem;
+    }
+
+    .post-description {
+        font-size: 0.95rem;
+        opacity: 0.8;
+        line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+        .blog-sidebar {
+            width: 100%;
+        }
+        
+        .sidebar-header {
+            padding-left: 3.5rem;  
+        }
+    }
+</style> 
+    <button id="theme-toggle" aria-label="Toggle theme">
+    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+</button>
+
+<style>
+    #theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.25rem;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+        color: var(--text);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    #theme-toggle:hover {
+        transform: scale(1.1);
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+<script>
+    const handleThemeToggleClick = () => {
+        const element = document.documentElement;
+        element.classList.toggle("dark");
+        const isDark = element.classList.contains("dark");
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        }
+        document.getElementById('sun-icon')?.classList.toggle('hidden');
+        document.getElementById('moon-icon')?.classList.toggle('hidden');
+    };
+
+    const setupTheme = () => {
+        const currentTheme = (() => {
+            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                return localStorage.getItem('theme') || 'dark';
+            }
+            if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'dark'; 
+        })();
+
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        if (currentTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+            sunIcon?.classList.add('hidden');
+            moonIcon?.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.add('dark');
+            sunIcon?.classList.remove('hidden');
+            moonIcon?.classList.add('hidden');
+        }
+
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('theme', currentTheme);
+        }
+
+        const themeToggleButton = document.getElementById("theme-toggle");
+        if (themeToggleButton) {
+            themeToggleButton.removeEventListener("click", handleThemeToggleClick);
+            themeToggleButton.addEventListener("click", handleThemeToggleClick);
+        }
+    };
+
+    
+    if (typeof document !== 'undefined') {
+        setupTheme();
+        document.addEventListener('DOMContentLoaded', setupTheme);
+    }
+</script> 
+    
+    <main id="main-content">
+        
+<main class="container mx-auto px-4 py-8">
+    <div class="logo-container">
+        <a href="/" class="logo-link" aria-label="Return to home page">
+            <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="-50 -50 700 519"
+    class="jc-logo"
+>
+    <g>
+        <path
+            class="letter j"
+            aria-label="J"
+            d="M285 0H240V334.06C240 354.821 223.018 371.797 202.25 371.797H100V416.797H202.25C248.027 416.797 285 379.775 285 334.06V0Z"
+        />
+        <path
+            class="letter c"
+            aria-label="C"
+            d="M300 82.7372C300 37.0217 337.027 0 382.75 0H525V45H382.75C361.988 45 345.006 61.9759 345.006 82.7372V334.06C345.006 354.821 361.988 371.797 382.75 371.797H525V416.797H382.75C337.027 416.797 300 379.775 300 334.06V82.7372Z"
+        />
+    </g>
+</svg>
+
+<style>
+    svg {
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
+        display: block;
+    }
+    .letter {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: center;
+    }
+    .j {
+        transform: translateX(-5px);
+    }
+    .c {
+        transform: translateX(5px);
+    }
+    svg:hover .j {
+        transform: translateX(-15px) scale(1.2);
+    }
+    svg:hover .c {
+        transform: translateX(15px) scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+        svg:hover .j {
+            transform: translateX(-12px) scale(1.15);
+        }
+        svg:hover .c {
+            transform: translateX(12px) scale(1.15);
+        }
+    }
+</style> 
+        </a>
+    </div>
+    <article class="prose dark:prose-invert mx-auto fade-in blog-post">
+        <time class="text-sm text-gray-500 dark:text-gray-400 blog-date">
+            August 10, 2025
+        </time>
+        <div class="mt-8 blog-content">
+            <h2 id="the-endless-quest-for-the-perfect-browser-a-chronicle">The Endless Quest for the Perfect Browser: A Chronicle</h2>
+<p>The internet, a vast ocean of information and distraction, demands a vessel to
+navigate its depths. For years, I&rsquo;ve been on a personal odyssey, a relentless
+search for the &ldquo;perfect&rdquo; web browser. It&rsquo;s a journey fraught with compromises,
+trials, and the occasional gem. And like any good quest, it continues.</p>
+<p>A critical factor in this pursuit is <strong>cross-platform compatibility</strong>. As
+someone who regularly juggles Windows, Mac, and occasionally Linux, a browser
+that seamlessly works across multiple operating systems is non-negotiable. This
+immediately rules out certain contenders, like Apple&rsquo;s Safari, which is tied to
+the macOS ecosystem. Beyond that, I&rsquo;ve also found Safari&rsquo;s interface to be too
+restrictive and its extension ecosystem lacking for my needs. My ideal browser
+must also embrace the spirit of <strong>open source</strong>, prioritizing transparency,
+community-driven development, and user control.</p>
+<h3 id="chrome-the-chrome-conundrum-and-edges-annoyances"><img src="https://avatars.githubusercontent.com/u/1778935?s=48&amp;v=4" alt="Chrome"> The Chrome Conundrum and Edge&rsquo;s Annoyances</h3>
+<p>Let&rsquo;s be clear: Google Chrome is out of the question for me. While the
+Chromium project, which Chrome is built upon, is open source, Google&rsquo;s
+implementation prioritizes their proprietary ecosystem and data collection. The
+privacy implications alone are enough to deter me. While the convenience of the
+Google ecosystem is undeniable, the thought of my browsing habits being
+constantly analyzed and monetized is a bridge too far.</p>
+<p><img src="https://avatars.githubusercontent.com/u/11354582?s=48&amp;v=4" alt="Edge"> Microsoft
+Edge, while certainly faster and more integrated into Windows than its
+predecessor, has its own set of frustrations. Like Chrome, it&rsquo;s based on
+Chromium, but its proprietary additions, such as the constant presence of
+Copilot, while potentially useful for some, feel intrusive and often get in the
+way of a seamless browsing experience. It&rsquo;s like having a helpful but overly
+enthusiastic assistant constantly trying to &ldquo;optimize&rdquo; your workflow.</p>
+<h3 id="vivaldi-vivaldis-appeal-and-its-downfall"><img src="https://avatars.githubusercontent.com/u/6242659?s=48&amp;v=4" alt="Vivaldi"> Vivaldi&rsquo;s Appeal (and its Downfall)</h3>
+<p>Vivaldi, with its incredible customization options and power-user features, was
+a tantalizing prospect. Built on Chromium and offering a robust set of open-source
+components, the ability to tailor every aspect of the browser to my precise
+needs was incredibly appealing. However, the sheer amount of setup required
+proved to be its undoing. While I appreciate the flexibility, the initial
+investment of time and effort to configure it to my liking was a barrier I
+couldn&rsquo;t quite overcome. Sometimes, you just want to plug and play.</p>
+<h3 id="thorium-thorium-a-promising-underdog"><img src="https://avatars.githubusercontent.com/u/45863095?s=48&amp;v=4" alt="Thorium"> Thorium: A Promising Underdog</h3>
+<p>Thorium holds a special place in my heart precisely because of its pure
+open-source ethos. It&rsquo;s a no-frills, Chromium-based browser that focuses on
+performance and a clean interface, stripping away much of the proprietary
+bloat. What I particularly love about it is its ability to easily sync all my
+configurations, making it a dream for quick setups across different machines.
+The only drawback? Its update schedule. It&rsquo;s maintained by one person. While perfectly usable, I prefer a
+browser that receives more frequent updates to ensure the latest security
+patches and feature improvements. Still, for a simple, fast browsing experience
+rooted in open-source principles, Thorium remains a strong contender.</p>
+<h3 id="firefox-firefox-the-old-faithful-with-a-catch"><img src="https://avatars.githubusercontent.com/u/148481591?s=48&amp;v=4" alt="Firefox"> Firefox: The Old Faithful (with a catch)</h3>
+<!-- Theo's Video Embed (Responsive and Centered) -->
+<div style="text-align: center;">
+  <iframe
+    width="100%"
+    height="auto"
+    src="https://www.youtube.com/embed/mmjUlFIaNLE?si=Ig8Gw9Ope-PZ7m8Q"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+    style="max-width: 560px; aspect-ratio: 16/9; display: block; margin: 0 auto;">
+  </iframe>
+</div>
+<p>Firefox, the perennial champion of open-source and privacy-focused browsing, is
+a solid choice. It&rsquo;s robust, customizable, and champions user privacy by being
+built entirely on open standards and transparent development. However, as
+<a href="https://t3.gg/">Theo&rsquo;s</a> video pointed out, it often feels like it&rsquo;s playing
+catch-up in terms of certain modern web features and performance optimizations.
+While it&rsquo;s certainly a viable open-source option, I find myself wanting a
+slightly more cutting-edge experience for my daily browsing. Also, in the past year, funding has been an issue which puts Firefox in a precarious place.</p>
+<h3 id="opera-operas-oddities"><img src="https://avatars.githubusercontent.com/u/191904?s=48&amp;v=4" alt="Opera"> Opera&rsquo;s Oddities</h3>
+<p>Opera, with its sleek design and built-in VPN, seemed promising at first. While
+it leverages some open-source components, its overall direction and business
+model quickly became a concern. My experience was quickly soured by what felt
+like an aggressive push for financial services. The repeated attempts to sell
+me credit cards felt out of place for a web browser and ultimately made me to
+question its true intentions, veering away from the open and user-centric model
+I prefer.</p>
+<h3 id="zen-zen-a-true-open-source-spirit"><img src="https://avatars.githubusercontent.com/u/165225155?s=48&amp;v=4" alt="Zen"> Zen: A True Open-Source Spirit</h3>
+<p>And so, Zen stands out as a compelling contender. Why Zen? <strong>Its dedication to
+being truly open source is the primary draw.</strong> In a landscape dominated by
+proprietary software and opaque data practices, Zen champions transparency,
+community-driven development, and ultimately, greater user control. Knowing
+that I can inspect its code, contribute to its growth, and rely on a community
+for its direction gives me unparalleled peace of mind.</p>
+<p>Beyond its open-source foundation, Zen offers other compelling benefits. For my
+current web development endeavors, the ability to experiment with View
+Transitions is a significant advantage. <strong>Recently, Zen is actively
+experimenting with View Transitions.</strong> My main website extensively uses View
+Transitions to create a smooth, app-like experience, and having a browser that
+allows me to test and preview these features is a game-changer.</p>
+<p>The frustrating part, however, is that <strong>View Transitions are not enabled by
+default in Zen</strong>. It&rsquo;s the same story with Firefox, which also supports them but
+requires a trip into the <strong>&lt;mark style={{backgroundColor: &lsquo;white&rsquo;}}&gt;<code>about:config</code></mark></strong>
+settings to flip a flag. While I&rsquo;m grateful that the capability exists, it&rsquo;s an
+annoying extra step that I wish wasn&rsquo;t necessary. It&rsquo;s incredibly satisfying to
+see my website come alive exactly as intended, without any jarring jumps or
+reloads, but having to manually enable this feature every time feels like a
+missed opportunity for a smoother out-of-the-box experience.</p>
+<p>Nevertheless, Zen has truly won me over with its thoughtful user experience,
+which feels both modern and respectful of user privacy due to its open-source
+foundation. The <strong>unique compact mode</strong> is a revelation, maximizing screen real
+estate without sacrificing functionality. And for a keyboard shortcut enthusiast
+like myself, Zen&rsquo;s <strong>excellent support for keyboard shortcuts</strong> makes navigating
+and performing tasks incredibly efficient. Furthermore, the way the <strong>sidebar
+gracefully opens when moving the mouse</strong> towards it adds a touch of fluid
+interactivity that feels genuinely intuitive. These seemingly small details
+contribute to a surprisingly refined and enjoyable browsing experience.</p>
+<p>Zen, at its core, feels purpose-built and focused. It&rsquo;s early days, but the
+initial experience has been remarkably positive. It&rsquo;s a testament to how a true
+open-source spirit, combined with thoughtful design and useful features, can
+profoundly impact a user&rsquo;s choice.</p>
+<h3 id="brave-brave-still-my-daily-driver-customized-for-privacy"><img src="https://avatars.githubusercontent.com/u/12301619?s=48&amp;v=4" alt="Brave"> Brave: Still My Daily Driver (customized for privacy)</h3>
+<p>For a considerable stretch of time, Brave has been my daily driver, and it
+continues to be my primary choice despite its quirks. Its built-in ad blocker
+and strong privacy features were a huge draw, offering a cleaner, less
+cluttered browsing experience. The promise of a more secure web, free from
+invasive trackers, resonated deeply with my desire for a less surveilled
+online existence. While Brave has its roots in open source, its direction began
+to diverge from my core preferences with the integration of &ldquo;Web3&rdquo; features.</p>
+<p>Over time, a creeping sense of unease began to settle in as the incessant push
+for &ldquo;Web3&rdquo; features, the integrated crypto wallet, and the general feeling of
+being constantly nudged towards their blockchain ecosystem became a significant
+point of contention. <strong>However, despite these additions, I&rsquo;ve found that the
+Web3 components can be easily disabled or ignored through Brave&rsquo;s settings,
+allowing it to function as a solid, privacy-focused alternative to Chrome
+without the inherent privacy concerns of Google&rsquo;s ecosystem. While some might
+find the mere presence of these technologies distracting, I personally
+appreciate Brave&rsquo;s commitment to blocking ads and trackers by default, making
+it a viable option for those seeking a more private browsing experience once it&rsquo;s
+customized to strip out the Web3 bloat.</strong></p>
+<p>Brave, once its Web3 features are toned down and it&rsquo;s configured to my liking,
+delivers a remarkably efficient and focused browsing experience. It&rsquo;s a
+testament to how a strong focus on privacy, combined with thoughtful design and
+useful features, can profoundly impact a user&rsquo;s choice, even when a bit of initial
+customization is required.</p>
+<h3 id="the-never-ending-story">The Never-Ending Story</h3>
+<p>The quest for the perfect web browser is, perhaps, a never-ending one. Technology
+evolves, new features emerge, and our needs as users shift. For now, Brave holds
+the crown as my daily driver, primarily due to its strong privacy commitment (once
+customized to remove Web3 elements) and its efficient browsing experience. Zen
+remains a strong contender for its pure open-source spirit and excellent
+development features. But I know, deep down, that the search will continue. And
+that, in itself, is part of the fun.</p>
+
+        </div>
+    </article>
+</main>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        document.querySelectorAll('pre').forEach(pre => {
+            pre.removeAttribute('tabindex');
+        });
+
+        
+        document.querySelectorAll('.copy-code-button').forEach((button) => {
+            button.addEventListener('click', async () => {
+                const wrapper = button.parentElement;
+                const pre = wrapper?.querySelector('pre');
+                const codeBlock = pre?.querySelector('code');
+                
+                if (!codeBlock) {
+                    console.error('No code block found');
+                    return;
+                }
+
+                try {
+                    const text = codeBlock.textContent || '';
+                    await navigator.clipboard.writeText(text);
+                    
+                    
+                    const originalContent = button.innerHTML;
+                    
+                    
+                    button.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    `;
+                    button.classList.add('copied');
+                    
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalContent;
+                        button.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .container {
+        max-width: 800px;
+    }
+
+     
+    @media screen and (min-width: 768px) and (max-width: 1280px) {
+      .container {
+        padding-left: 5rem !important;  
+        padding-right: 2rem !important;
+      }
+
+      .blog-date {
+        margin-left: 0.5rem;  
+      }
+    }
+
+    .logo-container {
+        width: 40px;
+        height: 40px;
+        margin: 1rem auto;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--text) !important;
+    }
+
+    .logo-container svg {
+        color: var(--text) !important;
+    }
+
+    .logo-link {
+        display: block;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
+
+    .logo-link:hover {
+        transform: scale(1.1);
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .blog-post {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        line-height: 1.8;
+    }
+
+    .blog-title {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+
+    .blog-date {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .blog-content {
+        font-size: 1.1rem;
+    }
+
+     
+    .blog-content img {
+        max-width: 100% !important;  
+        height: auto !important;  
+        display: block !important;  
+        margin: 1.5rem auto !important;  
+        box-sizing: border-box !important;  
+        object-fit: contain;  
+        border-radius: 8px;  
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+    }
+
+     
+    :root.dark .blog-content img {
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+    }
+
+    .blog-content h1 {
+        font-family: 'Inter', sans-serif;
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+
+    .blog-content h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+
+    .blog-content p {
+        margin-bottom: 1.5rem;
+    }
+
+    .blog-content ul, .blog-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+    }
+
+    .blog-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    .blog-content code {
+        font-family: 'Fira Code', monospace;
+        background: rgba(0, 0, 0, 0.05);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+
+    .blog-content pre {
+        background: #1a1a1a;
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        position: relative;
+    }
+
+    .blog-content pre code {
+        background: none;
+        padding: 0;
+        color: #fff;
+        display: block;
+    }
+
+    :root.dark .blog-content code {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    :root.dark .blog-content pre {
+        background: #2a2a2a;
+    }
+
+    :root.dark .blog-title {
+        color: var(--text);
+    }
+
+    :root.dark .blog-content h1 {
+        color: var(--text);
+    }
+
+
+
+     
+    .copy-code-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        color: #fff;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .copy-code-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .copy-code-button.copied {
+        background: rgba(0, 255, 0, 0.2);
+    }
+
+    .copy-code-button svg {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    :root.dark .copy-code-button {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    :root.dark .copy-code-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    :root.dark .copy-code-button.copied {
+        background: rgba(0, 255, 0, 0.2);
+    }
+
+    .blog-content a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .blog-content a:hover {
+        opacity: 0.8;
+    }
+</style>
+
+    </main>
+    
+    <script>
+  function setupCopyButtons() {
+    const codeBlocks = document.querySelectorAll("pre code");
+
+    codeBlocks.forEach((codeBlock) => {
+      let wrapper = codeBlock.parentElement;
+      if (!wrapper) return;
+
+      if (!wrapper.classList.contains("code-block-wrapper")) {
+        const newWrapper = document.createElement("div");
+        newWrapper.className = "code-block-wrapper";
+        wrapper.insertBefore(newWrapper, codeBlock);
+        newWrapper.appendChild(codeBlock);
+        wrapper = newWrapper;
+      }
+
+      if (!wrapper.querySelector(".copy-code-button")) {
+        const copySVG = `
+          <svg xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4
+                     a2 2 0 0 1 2-2h9
+                     a2 2 0 0 1 2 2v1"/>
+          </svg>`.trim();
+
+        const checkSVG = `
+          <svg xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>`.trim();
+
+        const btn = document.createElement("button");
+        btn.className = "copy-code-button";
+        btn.setAttribute("aria-label", "Copy code");
+        btn.innerHTML = copySVG;
+
+        btn.addEventListener("click", async () => {
+          try {
+            const text = codeBlock.textContent || "";
+            await navigator.clipboard.writeText(text);
+
+            const prev = btn.innerHTML;
+            btn.innerHTML = checkSVG + '<span class="btn-text">Copied!</span>';
+            btn.classList.add("copied");
+
+            setTimeout(() => {
+              btn.innerHTML = prev;
+              btn.classList.remove("copied");
+            }, 2000);
+          } catch (err) {
+            console.error("Failed to copy code:", err);
+          }
+        });
+
+        wrapper.appendChild(btn);
+      }
+    });
+  }
+
+  if (typeof document !== "undefined") {
+    setupCopyButtons();
+  }
+  document.addEventListener("DOMContentLoaded", setupCopyButtons);
+</script>
+
+<style>
+  .code-block-wrapper {
+    position: relative;
+    margin: 0.25rem 0;
+  }
+
+  .copy-code-button {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    padding: 0.3rem;
+    background: transparent;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    color: #8b949e;
+    transition: background 0.2s ease, color 0.2s ease;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .copy-code-button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  .copy-code-button .btn-text {
+    margin-left: 0.3rem;
+    font-size: 0.75rem;
+  }
+
+  .copy-code-button:hover {
+    background: rgba(110, 118, 129, 0.1);
+    color: #c9d1d9;
+  }
+
+  .copy-code-button.copied {
+    background: rgba(46, 164, 79, 0.1);
+    color: #2ea44f;
+  }
+
+  .copy-code-button:focus {
+    outline: none;
+  }
+
+  pre {
+    margin: 0;
+    padding: 0.5rem;
+    background: #1a1a1a;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+                 Consolas, "Liberation Mono", "Courier New",
+                 monospace;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+   
+  :root.dark .copy-code-button:hover {
+    background: rgba(110, 118, 129, 0.2);
+  }
+  :root.dark .copy-code-button.copied {
+    background: rgba(46, 164, 79, 0.2);
+  }
+</style> 
+    
+    <script>
+        
+        const handleSidebarToggleClick = () => {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebar-overlay");
+            
+            if (sidebar && overlay) {
+                const isOpen = sidebar.classList.contains('open');
+                
+                if (isOpen) {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('active');
+                } else {
+                    sidebar.classList.add('open');
+                    overlay.classList.add('active');
+                }
+            }
+        };
+
+        const handleOverlayClick = () => {
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("sidebar-overlay");
+            
+            if (sidebar && overlay) {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            }
+        };
+
+        const setupSidebar = () => {
+            const sidebarToggleButton = document.getElementById("sidebar-toggle");
+            const overlay = document.getElementById("sidebar-overlay");
+
+            if (sidebarToggleButton) {
+                sidebarToggleButton.removeEventListener("click", handleSidebarToggleClick);
+                sidebarToggleButton.addEventListener("click", handleSidebarToggleClick);
+            }
+            if (overlay) {
+                overlay.removeEventListener("click", handleOverlayClick);
+                overlay.addEventListener("click", handleOverlayClick);
+            }
+        };
+
+        
+        if (typeof document !== 'undefined') {
+            setupSidebar();
+            document.addEventListener('DOMContentLoaded', setupSidebar);
+        }
+    </script>
+</body>
+</html> 

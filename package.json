@@ -1,0 +1,13 @@
+{
+  "name": "hugo-website",
+  "version": "0.0.1",
+  "description": "Hugo clone of Jared Cervantes personal website",
+  "scripts": {
+    "dev": "hugo server -D --bind 0.0.0.0",
+    "build": "hugo build",
+    "preview": "hugo server --bind 0.0.0.0"
+  },
+  "keywords": ["hugo", "personal-website", "blog"],
+  "author": "Jared Cervantes",
+  "license": "MIT"
+} 
