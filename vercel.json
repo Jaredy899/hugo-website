@@ -1,0 +1,29 @@
+{
+  "build": {
+    "env": {
+      "HUGO_VERSION": "0.147.8"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/win",
+      "destination": "https://raw.githubusercontent.com/Jaredy899/win/main/first-setup.ps1",
+      "permanent": true
+    },
+    {
+      "source": "/mac",
+      "destination": "https://raw.githubusercontent.com/Jaredy899/mac/main/setup.sh",
+      "permanent": true
+    },
+    {
+      "source": "/linux",
+      "destination": "https://raw.githubusercontent.com/Jaredy899/linux/refs/heads/main/linux.sh",
+      "permanent": true
+    },
+    {
+      "source": "/debian",
+      "destination": "https://raw.githubusercontent.com/Jaredy899/linux/refs/heads/main/config_changes/preseed.cfg",
+      "permanent": true
+    }
+  ]
+} 
