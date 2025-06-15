@@ -1,0 +1,52 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 py-8">
+  <header class="mb-8">
+    <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
+    {{ if .Content }}
+      <div class="prose prose-lg max-w-none">
+        {{ .Content }}
+      </div>
+    {{ end }}
+  </header>
+
+  {{ if .Pages }}
+    <div class="grid gap-6">
+      {{ range .Pages }}
+        <article class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+          <header class="mb-4">
+            <h2 class="text-2xl font-semibold mb-2">
+              <a href="{{ .Permalink }}" class="text-blue-600 hover:text-blue-800 no-underline">
+                {{ .Title }}
+              </a>
+            </h2>
+            {{ if .Date }}
+              <time class="text-gray-600 text-sm" datetime="{{ .Date.Format "2006-01-02" }}">
+                {{ .Date.Format "January 2, 2006" }}
+              </time>
+            {{ end }}
+          </header>
+          
+          {{ if .Description }}
+            <p class="text-gray-700 mb-4">{{ .Description }}</p>
+          {{ else if .Summary }}
+            <div class="prose prose-sm text-gray-700 mb-4">
+              {{ .Summary }}
+            </div>
+          {{ end }}
+          
+          <footer>
+            <a href="{{ .Permalink }}" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+              Read more
+              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </footer>
+        </article>
+      {{ end }}
+    </div>
+  {{ else }}
+    <p class="text-gray-600">No content found.</p>
+  {{ end }}
+</div>
+{{ end }} 
