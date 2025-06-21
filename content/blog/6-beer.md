@@ -1,7 +1,7 @@
 ---
 title: "Beer!"
 description: "Why Beer is great and specifically IPA's."
-pubDate: 2025-06-22
+date: 2025-06-22
 draft: false
 ---
 
