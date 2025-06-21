@@ -1,6 +1,7 @@
 baseURL = 'https://hugo.jaredcervantes.com'
 languageCode = 'en-us'
 title = 'Jared Cervantes'
+buildFuture = true
 
 [params]
   description = "Personal website of Jared Cervantes"
