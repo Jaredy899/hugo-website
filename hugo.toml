@@ -1,4 +1,4 @@
-baseURL = 'https://hugo.jaredcervantes.com'
+# baseURL will be set by Vercel automatically based on the deployment URL
 languageCode = 'en-us'
 title = 'Jared Cervantes'
 buildFuture = true
