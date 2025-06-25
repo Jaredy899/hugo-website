@@ -100,6 +100,9 @@ function enableViewTransitions() {
                     // Update the URL
                     window.history.pushState({}, '', href);
                     
+                    // Scroll to top of the page
+                    window.scrollTo(0, 0);
+                    
                     // Small delay before re-initializing scripts
                     await new Promise(resolve => setTimeout(resolve, 50));
                     
@@ -178,6 +181,9 @@ function enableViewTransitions() {
                         currentMainContent.innerHTML = '';
                         currentMainContent.innerHTML = newMainContent.innerHTML;
                     }
+                    
+                    // Scroll to top for back/forward navigation
+                    window.scrollTo(0, 0);
                     
                     await new Promise(resolve => setTimeout(resolve, 50));
                     
