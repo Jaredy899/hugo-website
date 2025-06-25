@@ -3,9 +3,23 @@ languageCode = 'en-us'
 title = 'Jared Cervantes'
 buildFuture = true
 
+# Enable Hugo's asset pipeline features
+[build]
+  publishDir = "public"
+
+# Enable git info for lastmod dates
+enableGitInfo = true
+
+# Enable robots.txt generation
+enableRobotsTXT = true
+
 [params]
   description = "Personal website of Jared Cervantes"
   author = "Jared Cervantes"
+
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
 
 [frontmatter]
   date = ["pubDate", "date"]

@@ -1,0 +1,135 @@
+:root {
+    --accent: 136, 58, 234;
+    --accent-light: 255, 230, 255;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+        45deg,
+        rgb(var(--accent)),
+        rgb(var(--accent-light)) 30%,
+        white 60%
+    );
+    --background: #ffffff;
+    --text: #333333;
+    --link-color: rgb(var(--accent));
+    --sidebar-width: 300px;
+    --content-max-width: 1000px;
+}
+
+:root.dark {
+    --background: #000000;
+    --text: #ffffff;
+    --link-color: #b794f4;
+}
+
+html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--background);
+    background-size: 224px;
+    color: var(--text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: padding-left 0.3s ease;
+}
+
+body.sidebar-open {
+    padding-left: var(--sidebar-width);
+    overflow: hidden;
+}
+
+#main-content {
+    max-width: var(--content-max-width);
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+#sidebar-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.25rem;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 1002;
+}
+
+#sidebar-toggle:hover {
+    transform: scale(1.1);
+}
+
+code {
+    font-family:
+        'Fira Code',
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        "Courier New",
+        monospace;
+}
+
+/* View Transition Styles */
+@supports (view-transition-name: none) {
+    .jc-logo-transition {
+        view-transition-name: jc-logo;
+    }
+}
+
+/* View Transition Animations */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.3s;
+}
+
+::view-transition-old(jc-logo),
+::view-transition-new(jc-logo) {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tablet and Mobile Overrides */
+@media (max-width: 768px) {
+    body {
+        align-items: stretch;
+        justify-content: flex-start;
+        padding-left: 0 !important;
+    }
+
+    body.sidebar-open {
+        padding-left: 0 !important;
+        overflow: hidden;
+    }
+
+    #main-content {
+        max-width: none;
+        padding: 3rem 1rem 1rem 1rem;
+    }
+}
+
+/* Small Mobile Overrides */
+@media (max-width: 480px) {
+    #sidebar-toggle {
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+
+    #main-content {
+        padding: 3rem 0.5rem 0.5rem 0.5rem;
+    }
+} 

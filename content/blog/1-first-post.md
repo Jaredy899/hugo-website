@@ -1,8 +1,10 @@
 ---
 title: "My First Post"
-description: "My first blog post! I built this blog using Astro and added cool view transitions."
+description: "My first blog post! I built this blog using Hugo and added cool view transitions."
 date: 2025-05-19
 draft: false
+tags: ["hugo", "web-development", "view-transitions"]
+categories: ["technology", "blog"]
 ---
 
 # Welcome to My Blog

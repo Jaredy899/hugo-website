@@ -19,49 +19,7 @@
     {{ partial "navigation.html" . }}
 </main>
 
-<style>
-    main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem;
-        gap: 2rem;
-    }
-    .logo-container {
-        width: 400px;
-        height: 400px;
-        color: var(--text);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .logo-container .jc-logo {
-        width: 400px !important;
-        height: 400px !important;
-    }
-    .home-link {
-        color: var(--text);
-        text-decoration: none;
-        transition: color 0.2s ease, transform 0.2s ease;
-        margin-top: -1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .home-link:hover {
-        color: var(--text);
-        opacity: 0.8;
-        transform: scale(1.1);
-    }
-    .icon-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .nav-icon {
-        fill: currentColor;
-        width: 32px;
-        height: 32px;
-    }
-</style>
+<!-- Homepage-specific CSS -->
+{{- $homepageCSS := resources.Get "css/components/homepage.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $homepageCSS.Permalink }}" integrity="{{ $homepageCSS.Data.Integrity }}">
 {{ end }} 
