@@ -2,112 +2,101 @@
 title: "My Ongoing Journey with FND: Still Searching for Answers"
 description: "My Journey with FND"
 pubDate: 2025-06-29
-draft: true
+draft: false
 ---
 
 # 🌱 My Ongoing Journey with FND: Still Searching for Answers
 
 ---
 
-> **Note:**  
-> This is a personal account of my experience with Functional Neurological Disorder (FND). If you're on a similar path, I hope my story brings you comfort and connection.
-
----
-
 ## 🚪 The Beginning: A Fall in 2014
 
-It all started in 2014. I was in the garage, carrying something, when I fell backwards.  
-At the time, it seemed like a simple accident. But looking back, it was the first sign of a much longer journey.
+In 2014, I fell backward in my garage while carrying an item. This incident marked the beginning of a pattern of falls.
 
-Over the next few years, I noticed a pattern:
+Over the subsequent years, I experienced:
 
-- I would misstep or step on something I didn't see.
-- I'd shake a little and fall.
-- These incidents became more frequent.
+- Missteps or stepping on unseen objects.
+- Tremors followed by falls.
+- These incidents increased in frequency.
 
-Really from the beginning, I knew something wasn't right.
+From the outset, I recognized these events as abnormal.
 
 ---
 
 ## 🦠 The Pandemic Years: Isolation & Adaptation
 
-When the pandemic hit, everything changed.
+The COVID-19 pandemic altered my routine.
 
-- I stayed home more.
-- I got used to not going out.
-- In some ways, this made things easier—I didn't have to worry about falling in public.
-- But it also meant I wasn't challenging myself to stay active or confront my fears.
+- I spent more time at home.
+- This reduced my exposure to public spaces, thereby decreasing the risk of public falls.
+- However, it also limited my physical activity and exposure therapy for fall-related anxieties.
 
 ---
 
 ## ⚡ The Seizure That Changed Everything
 
-2021 was a turning point.
+2021 marked a significant event.
 
-One day, my foot hit the table. I shook, fell, and then—nothing.  
-The next thing I remember, I was asking for help, and my wife was telling me to stay put while we waited for the ambulance.
+My foot made contact with a table, resulting in a tremor, a fall, and a subsequent loss of consciousness. I regained awareness asking for assistance; my wife instructed me to remain still while waiting for emergency services.
 
-> **That was my first (and so far only) grand mal seizure.**
+> **This was my first grand mal seizure.**
 
-This event set off a cascade of doctor's appointments:
+This event initiated a series of medical consultations:
 
 - Primary care physicians
 - Neurologists
-- Countless tests
+- Multiple diagnostic tests
 
-Each visit brought new questions, but not many answers.
+These appointments generated numerous questions but few definitive answers.
 
 ---
 
 ## 🧠 Testing, Fear, and Uncertainty
 
-In 2024, my doctors ordered a **24-hour ambulatory EEG**.  
-The goal: to capture one of my falls on the recording.
+In 2024, a 24-hour ambulatory EEG was ordered to capture a fall event.
 
-> Ironically, knowing I was *supposed* to fall only increased my fear of falling.
+> The awareness of being monitored for a fall increased my anxiety regarding falls.
 
-About a month after the EEG, my symptoms worsened:
+Approximately one month after the EEG, my symptoms intensified:
 
-- Walking without assistance became difficult.
-- I hoped a vacation might help, but it made things worse.
+- Unassisted ambulation became difficult.
+- A planned vacation did not alleviate, but rather exacerbated, symptoms.
 
-I ended up taking **three months off work**. During that time:
+I subsequently took **three months of medical leave from work**. During this period:
 
-- I started physical therapy (PT).
-- I began seeing a psychologist.
+- I initiated physical therapy (PT).
+- I began sessions with a psychologist.
 
-Both have been incredibly helpful, but the journey has been anything but straightforward.
+Both interventions have provided benefit; however, the diagnostic and treatment process has not been linear.
 
 ---
 
 ## 🩺 A Diagnosis—But Is It the Final One?
 
-After years of uncertainty, a movement specialist finally confirmed what I and some doctors had suspected:
+After years of diagnostic uncertainty, a movement disorder specialist confirmed a diagnosis of:
 
-> ## **Functional Neurological Disorder (FND)**
+> ## **[Functional Neurological Disorder (FND)](https://www.ninds.nih.gov/health-information/disorders/functional-neurologic-disorder)**
 
-I still work with my physical therapist and continue to struggle with balance, especially in unfamiliar places.
+I continue to work with my physical therapist and experience balance difficulties, particularly in unfamiliar environments.
 
-I know that much of my trouble walking is rooted in a deep **fear of falling**, but I can't shake the suspicion that **stimulus-sensitive myoclonic seizures** may have started all of this.
+While a significant component of my gait disturbance is attributed to a **fear of falling**, I also suspect that **[stimulus-sensitive myoclonic seizures](https://www.ninds.nih.gov/health-information/disorders/myoclonus)** may have been the initial trigger.
 
-- Medication helps.
-- PT is invaluable.
-- But it's still very much a *mind-over-matter* issue.
+- Medication provides assistance.
+- Physical therapy is essential.
+- The condition involves a significant psychological component.
 
-Some days are better than others, and I'm learning to accept that **uncertainty is part of my journey**.
+Symptom severity varies daily, and I am adapting to the **uncertainty inherent in my condition**.
 
 ---
 
 ## 🌄 Moving Forward
 
-Living with FND means living with questions.
+Living with FND involves ongoing questions.
 
-I'm grateful for the support of:
+I acknowledge the support from:
 
 - My medical team
 - My Physical Therapist
-- Especially my family
+- My family
 
-I'm still not sure if FND is the final answer, but I'm learning to manage my symptoms and reclaim parts of my life.
-
----
+I remain uncertain if FND is the definitive diagnosis, but I am learning to manage my symptoms and regain functional capacity.
