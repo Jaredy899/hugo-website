@@ -2,12 +2,12 @@
 title: "The Magic of Flight: A Personal Journey Through Aviation"
 description: "A heartfelt reflection on my lifelong passion for aviation, inspired by my grandfather and nurtured through flight simulators"
 pubDate: 2025-07-06
-draft: true
+draft: false
 ---
 
 # ✈️ The Magic of Flight
 
-My love for airplanes didn't just happen overnight. My grandfather also loved going to the airport and his hobby was model airplanes. Neither of us became pilots for various reasons (some I'll get into in a later post), but we both loved the idea of flight.
+My love for airplanes didn't just happen overnight. My grandfather also loved going to the airport and his hobby was model airplanes. Neither of us became pilots for various reasons (some of which I talk about in [a previous post](/blog/7-fnd)), but we both loved the idea of flight.
 
 ## 🎮 From Simulator to Reality
 
@@ -17,7 +17,7 @@ One of my earliest memories is sitting in my grandfather's lap, watching him nav
 
 > "The smell of jet fuel at airports, that distinct aroma that somehow manages to be both industrial and exciting – it's like a time machine that instantly transports me back to those childhood days at the airport with my grandfather."
 
-<video controls style="width: 100%; aspect-ratio: 16/9;">
+<video controls width="100%" style="aspect-ratio: 16/9;">
   <source src="https://qmpdliftraf4pov3.public.blob.vercel-storage.com/747-go-around-UxJQgq0EHLg5kGjabu5txGQemClngU.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
@@ -40,7 +40,7 @@ I've come to love every aspect of flying, even the ones that make others nervous
 
 Even though I used flight simulator most of my life, my knowledge of aviation became stronger after watching pilots on YouTube. I still spend hours listening to them explain how each of their airplanes works and love listening to them talking to ATC.
 
-This deep dive into the world of aviation has only intensified my passion, but it also brings a touch of sadness. For various personal reasons, including my Functional Neurological Disorder (FND), becoming a pilot myself isn't a possibility for me. It's a bummer, to say the least, to dream so vividly of taking the controls and soaring through the sky, yet knowing that it's a path I can't physically pursue. Still, that doesn't diminish the immense joy and fascination I find in every aspect of flight, whether it's through a screen or from a passenger window.
+This deep dive into the world of aviation has only intensified my passion, but it also brings a touch of sadness. For various personal reasons, including my [Functional Neurological Disorder (FND)](/blog/7-fnd), becoming a pilot myself isn't a possibility for me. It's a bummer, to say the least, to dream so vividly of taking the controls and soaring through the sky, yet knowing that it's a path I can't physically pursue. Still, that doesn't diminish the immense joy and fascination I find in every aspect of flight, whether it's through a screen or from a passenger window.
 
 ## 🌅 Looking to the Future
 
