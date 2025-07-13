@@ -132,4 +132,12 @@ code {
     #main-content {
         padding: 3rem 0.5rem 0.5rem 0.5rem;
     }
+}
+
+/* Ensure SVGs in blog content respect their inline width */
+.blog-content svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 } 
