@@ -307,5 +307,23 @@
     .blog-content a:hover {
         opacity: 0.8;
     }
+
+    /* Specific styling for SVGs to override image styles */
+    .blog-content svg {
+        max-width: none !important;
+        width: auto !important;
+        height: auto !important;
+        display: inline-block !important;
+        margin: 0 !important;
+        box-sizing: content-box !important;
+        object-fit: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+
+    /* Ensure SVGs respect their inline width attribute */
+    .blog-content svg[width] {
+        width: var(--svg-width) !important;
+    }
 </style>
 {{ end }} 
