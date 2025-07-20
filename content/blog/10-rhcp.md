@@ -2,7 +2,7 @@
 title: "Red Hot Chili Peppers"
 description: "Why the Chili Peppers are one of the greatest bands."
 pubDate: 2025-07-20
-draft: true
+draft: false
 ---
 
 ![Red Hot Chili Peppers](https://qmpdliftraf4pov3.public.blob.vercel-storage.com/rhcp-logo-lmPcbtdOC6xq8NJ0KacB5syO6EFawV.webp)
@@ -35,9 +35,21 @@ The synergy within this quartet is simply unparalleled. Frusciante's melodic and
 
 ### Iconic Albums of the Golden Era
 
-* **Californication** (1999) - A triumphant return to form after a period of uncertainty, delivering introspective lyrics alongside classic funk-rock anthems.
-* **By The Way** (2002) - Showcased a more melodic and melancholic side of the band, with intricate harmonies and beautiful arrangements.
-* **Stadium Arcadium** (2006) - A sprawling double album that demonstrated their incredible range, seamlessly blending their signature funk with more experimental and atmospheric tracks.
+![Californication Album Cover](https://upload.wikimedia.org/wikipedia/en/d/df/RedHotChiliPeppersCalifornication.jpg)
+
+**Californication** (1999) - A triumphant return to form after a period of uncertainty, delivering introspective lyrics alongside classic funk-rock anthems.
+
+---
+
+![By the Way Album Cover](https://upload.wikimedia.org/wikipedia/en/2/23/Rhcp9.jpg)
+
+**By The Way** (2002) - Showcased a more melodic and melancholic side of the band, with intricate harmonies and beautiful arrangements.
+
+---
+
+![Stadium Arcadium Album Cover](https://upload.wikimedia.org/wikipedia/en/e/e6/Stadiumarcadium.jpg)
+
+**Stadium Arcadium** (2006) - A sprawling double album that demonstrated their incredible range, seamlessly blending their signature funk with more experimental and atmospheric tracks.
 
 ---
 
