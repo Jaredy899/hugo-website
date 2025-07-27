@@ -1,7 +1,7 @@
 ---
 title: "My Linux Configuration"
 description: "How I configure different linux Distributions"
-pubDate: 2025-07-27
+pubDate: 2025-08-17
 draft: true
 ---
 

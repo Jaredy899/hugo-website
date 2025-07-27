@@ -1,8 +1,8 @@
 ---
 title: "The Importance of Case Management in First Episode Psychosis Recovery"
 description: "How case management can help individuals with first episode psychosis."
-pubDate: 2025-08-17
-draft: true
+pubDate: 2025-07-27
+draft: false
 ---
 
 # Case Management: A Cornerstone of First Episode Psychosis Recovery
