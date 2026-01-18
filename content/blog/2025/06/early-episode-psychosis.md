@@ -1,7 +1,7 @@
 ---
 title: "Early Episode Psychosis"
 description: "What I learned from my recent conference"
-date: 2025-06-08
+pubDate: 2025-06-08
 draft: false
 ---
 

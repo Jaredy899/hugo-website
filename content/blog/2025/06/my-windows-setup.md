@@ -1,10 +1,9 @@
 ---
 title: "My Windows Setup"
 description: "How I set up my Windows machine"
-date: 2025-06-02
+pubDate: 2025-06-02
 draft: false
 ---
-
 # 🖥️ My Windows Setup
 
 ---
