@@ -32,6 +32,7 @@ enableRobotsTXT = true
     style = "github-dark"
     lineNos = false
     codeFences = true
+    noClasses = false
 
 [menu]
   [[menu.social]]

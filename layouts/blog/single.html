@@ -1,109 +1,87 @@
 {{ define "main" }}
-<main class="container mx-auto px-4 py-8">
-    <div class="logo-container">
-        <a href="/" class="logo-link" aria-label="Return to home page">
-            {{ partial "jc-logo.html" . }}
-        </a>
-    </div>
-    <article class="prose dark:prose-invert mx-auto fade-in blog-post">
-        <time class="text-sm text-gray-500 dark:text-gray-400 blog-date">
-            {{ .Date.Format "January 2, 2006" }}
-        </time>
-        <div class="mt-8 blog-content">
-            {{ .Content }}
+<article class="prose fade-in blog-post">
+    <header class="post-header">
+        <h1>{{ .Title }}</h1>
+        <div class="post-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+            {{ with .Params.tags }}
+            <div class="tags">
+                {{ range . }}
+                <span class="tag">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
         </div>
-    </article>
-</main>
+    </header>
+    <div class="blog-content">
+        {{ .Content }}
+    </div>
+    <footer class="post-footer">
+        <a href="/" class="back-link">← Back to Home</a>
+    </footer>
+</article>
 
 <script>
-    // Remove tabindex from pre elements and setup copy buttons
     document.addEventListener('DOMContentLoaded', () => {
-        // Remove tabindex
-        document.querySelectorAll('pre').forEach(pre => {
-            pre.removeAttribute('tabindex');
-        });
-
-        // Setup copy buttons
-        document.querySelectorAll('.copy-code-button').forEach((button) => {
-            button.addEventListener('click', async () => {
-                const wrapper = button.parentElement;
-                const pre = wrapper?.querySelector('pre');
-                const codeBlock = pre?.querySelector('code');
-                
-                if (!codeBlock) {
-                    console.error('No code block found');
-                    return;
-                }
-
-                try {
-                    const text = codeBlock.textContent || '';
-                    await navigator.clipboard.writeText(text);
-                    
-                    // Store original button content
-                    const originalContent = button.innerHTML;
-                    
-                    // Show feedback
-                    button.innerHTML = `
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                    `;
-                    button.classList.add('copied');
-                    
-                    // Restore original content after 2 seconds
-                    setTimeout(() => {
-                        button.innerHTML = originalContent;
-                        button.classList.remove('copied');
-                    }, 2000);
-                } catch (err) {
-                    console.error('Failed to copy text: ', err);
-                }
-            });
-        });
+        document.querySelectorAll('pre').forEach(pre => pre.removeAttribute('tabindex'));
     });
 </script>
 
 <style>
-    .container {
-        max-width: 800px;
+    .post-header {
+        margin-bottom: 3rem;
     }
 
-    /* Add specific tablet and desktop adjustments */
-    @media screen and (min-width: 768px) and (max-width: 1280px) {
-      .container {
-        padding-left: 5rem !important; /* Add more padding on the left to account for sidebar */
-        padding-right: 2rem !important;
-      }
-
-      .blog-date {
-        margin-left: 0.5rem; /* Add some margin to the date */
-      }
+    .post-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        color: var(--text);
     }
 
-    .logo-container {
-        width: 40px;
-        height: 40px;
-        margin: 1rem auto;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        color: var(--text) !important;
+    .post-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        opacity: 0.8;
+        color: var(--text);
     }
 
-    .logo-container svg {
-        color: var(--text) !important;
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 
-    .logo-link {
-        display: block;
+    .tag {
+        background-color: rgba(128, 128, 128, 0.2);
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.9rem;
+        color: var(--text);
+    }
+
+    .post-footer {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(128, 128, 128, 0.3);
+    }
+
+    .back-link {
+        color: var(--text);
         text-decoration: none;
-        transition: transform 0.3s ease;
+        transition: opacity 0.2s ease;
+        font-weight: 500;
     }
 
-    .logo-link:hover {
-        transform: scale(1.1);
+    .back-link:hover {
+        opacity: 0.7;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1280px) {
+      .post-meta {
+        margin-left: 0.5rem;
+      }
     }
 
     .fade-in {
@@ -195,49 +173,59 @@
         margin-bottom: 0.5rem;
     }
 
-    .blog-content code {
-        font-family: 'Fira Code', monospace;
-        background: rgba(0, 0, 0, 0.05);
+    /* Inline code only (not inside pre) - match GitHub/Nuxt */
+    .blog-content code:not(pre code) {
+        font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        background: rgba(128, 128, 128, 0.2);
         padding: 0.2em 0.4em;
-        border-radius: 3px;
+        border-radius: 0.25rem;
         font-size: 0.9em;
     }
 
-    .blog-content .code-block-wrapper {
-        position: relative !important;
-        margin: 0.25rem 0 !important;
-    }
-
-    .blog-content .code-block-wrapper pre,
-    .blog-content pre {
-        margin: 0 !important;
-        padding: 0.5rem !important;
-        background: #1a1a1a !important;
-        border-radius: 0.5rem !important;
-        overflow-x: auto !important;
-        position: relative !important;
-    }
-
-    .blog-content .code-block-wrapper pre code,
-    .blog-content pre code {
-        background: none !important;
-        padding: 0 !important;
-        color: #fff !important;
-        display: block !important;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
-                     Consolas, "Liberation Mono", "Courier New",
-                     monospace !important;
-        font-size: 0.875rem !important;
-        line-height: 1.4 !important;
-    }
-
-    :root.dark .blog-content code {
+    :root.dark .blog-content code:not(pre code) {
         background: rgba(255, 255, 255, 0.1);
     }
 
-    :root.dark .blog-content .code-block-wrapper pre,
-    :root.dark .blog-content pre {
-        background: #1a1a1a !important;
+    /* Code blocks: preserve Hugo/Chroma syntax highlighting (GitHub-like); only set layout/font */
+    .blog-content .highlight {
+        position: relative;
+        margin: 1rem 0;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .blog-content .highlight pre,
+    .blog-content pre {
+        margin: 0 !important;
+        padding: 1rem !important;
+        padding-right: 3rem !important;
+        border-radius: 8px !important;
+        overflow-x: auto !important;
+        position: relative !important;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+        font-size: 0.875rem !important;
+        line-height: 1.5 !important;
+        -webkit-text-size-adjust: none;
+        tab-size: 4;
+        /* Do not set background/color here – let Hugo's inline styles (github-dark) apply */
+    }
+
+    /* Fallback when Hugo doesn't output inline styles */
+    .blog-content .highlight pre:not([style*="background"]),
+    .blog-content pre:not([style*="background"]) {
+        background-color: #0d1117 !important;
+        color: #e6edf3 !important;
+    }
+
+    .blog-content .highlight pre code,
+    .blog-content pre code {
+        background: none !important;
+        padding: 0 !important;
+        display: block !important;
+        font-family: inherit !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
+        /* Do not set color – Chroma token classes (.k, .s, .c, etc.) provide syntax colors */
     }
 
     :root.dark .blog-title {
@@ -250,12 +238,12 @@
 
 
 
-    /* Copy button styles - Override to match copy-button-script.html */
-    .blog-content .copy-code-button {
+    /* Copy button: inside .highlight pre, so right edge aligns with code block */
+    .blog-content .highlight pre .copy-code-button {
         position: absolute !important;
-        top: 0.25rem !important;
-        right: 0.25rem !important;
-        padding: 0.3rem !important;
+        top: 0.5rem !important;
+        right: 0.5rem !important;
+        padding: 0.5rem !important;
         background: transparent !important;
         border: none !important;
         border-radius: 0.25rem !important;
@@ -268,44 +256,53 @@
         justify-content: center !important;
     }
 
-    .blog-content .copy-code-button:hover {
+    .blog-content .highlight pre .copy-code-button:hover {
         background: rgba(110, 118, 129, 0.1) !important;
         color: #c9d1d9 !important;
     }
 
-    .blog-content .copy-code-button.copied {
+    .blog-content .highlight pre .copy-code-button.copied {
         background: rgba(46, 164, 79, 0.1) !important;
         color: #2ea44f !important;
     }
 
-    .blog-content .copy-code-button svg {
-        width: 1.25rem !important;
-        height: 1.25rem !important;
+    .blog-content .highlight pre .copy-code-button svg {
+        width: 1rem !important;
+        height: 1rem !important;
         stroke: currentColor !important;
         fill: none !important;
     }
 
-    .blog-content .copy-code-button .btn-text {
-        margin-left: 0.3rem !important;
+    .blog-content .highlight pre .copy-code-button .btn-text {
+        margin-left: 0.375rem !important;
         font-size: 0.75rem !important;
     }
 
-    :root.dark .blog-content .copy-code-button:hover {
+    :root.dark .blog-content .highlight pre .copy-code-button:hover {
         background: rgba(110, 118, 129, 0.2) !important;
     }
 
-    :root.dark .blog-content .copy-code-button.copied {
+    :root.dark .blog-content .highlight pre .copy-code-button.copied {
         background: rgba(46, 164, 79, 0.2) !important;
     }
 
     .blog-content a {
-        color: var(--link-color);
-        text-decoration: none;
+        color: var(--text);
+        text-decoration: underline;
         transition: opacity 0.2s ease;
     }
 
     .blog-content a:hover {
-        opacity: 0.8;
+        opacity: 0.7;
+    }
+
+    @media (max-width: 767px) {
+        .post-header h1 {
+            font-size: 2rem;
+        }
+        .post-meta {
+            flex-direction: column;
+        }
     }
 
     /* Specific styling for SVGs to override image styles */

@@ -1,13 +1,13 @@
 {{ define "main" }}
-<main>
-    <div class="logo-container">
+<div class="home-content">
+    <div class="logo-container" style="view-transition-name: jc-logo;">
         {{ partial "jc-logo.html" . }}
     </div>
     <a href="https://home.jaredcervantes.com" class="home-link" target="_blank" rel="noopener noreferrer" aria-label="Personal Applications">
         <div class="icon-container">
-            <svg 
+            <svg
                 class="nav-icon"
-                xmlns="http://www.w3.org/2000/svg" 
+                xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 576 512"
                 width="24"
                 height="24"
@@ -17,7 +17,7 @@
         </div>
     </a>
     {{ partial "navigation.html" . }}
-</main>
+</div>
 
 <!-- Homepage-specific CSS -->
 {{- $homepageCSS := resources.Get "css/components/homepage.css" | minify | fingerprint -}}

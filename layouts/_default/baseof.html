@@ -6,19 +6,37 @@
     <!-- CSS with Hugo Pipes -->
     {{- $css := resources.Get "css/main.css" | minify | fingerprint -}}
     <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}">
+    {{- $chroma := resources.Get "css/chroma-github-dark.css" | minify | fingerprint -}}
+    <link rel="stylesheet" href="{{ $chroma.Permalink }}" integrity="{{ $chroma.Data.Integrity }}">
 </head>
-<body>
-    <button id="sidebar-toggle" aria-label="Toggle sidebar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill: none !important;">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor"></rect>
-            <line x1="8" y1="6" x2="8" y2="18" stroke="currentColor"></line>
-        </svg>
-    </button>
+{{ $isBlogPage := and (eq .Section "blog") .IsPage }}
+<body{{ if $isBlogPage }} class="blog-post-page"{{ end }}>
+    <header class="page-header" id="page-header"{{ if $isBlogPage }} role="banner"{{ end }}>
+        <div class="header-left">
+            <button id="sidebar-toggle" aria-label="Toggle sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill: none !important;">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="none" stroke="currentColor"></rect>
+                    <line x1="8" y1="6" x2="8" y2="18" stroke="currentColor"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="header-center">
+            {{ if not .IsHome }}
+            <div class="header-logo-container" style="view-transition-name: jc-logo;">
+                <a href="/" class="header-logo-link" aria-label="Return to home page">
+                    {{ partial "jc-logo.html" . }}
+                </a>
+            </div>
+            {{ end }}
+        </div>
+        <div class="header-right">
+            {{ partial "theme-toggle.html" . }}
+        </div>
+    </header>
     
     {{ partial "sidebar.html" . }}
-    {{ partial "theme-toggle.html" . }}
     
-    <main id="main-content">
+    <main id="main-content"{{ if $isBlogPage }} class="blog-main"{{ else if .IsHome }} class="home-main"{{ end }}>
         {{ block "main" . }}{{ end }}
     </main>
     

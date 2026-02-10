@@ -63,10 +63,8 @@ function enableViewTransitions() {
         try {
             const transition = document.startViewTransition(async () => {
                 try {
-                    // Add a small delay to ensure DOM is ready
                     await new Promise(resolve => setTimeout(resolve, 10));
                     
-                    // Fetch the new page
                     const response = await fetch(href, {
                         headers: {
                             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
@@ -80,36 +78,41 @@ function enableViewTransitions() {
                     const parser = new DOMParser();
                     const newDoc = parser.parseFromString(html, 'text/html');
                     
-                    // Update the page title
                     document.title = newDoc.title;
                     
-                    // Update the main content
+                    // Update header (so logo appears when navigating to blog, and view transition can match jc-logo)
+                    const newHeader = newDoc.querySelector('#page-header');
+                    const currentHeader = document.querySelector('#page-header');
+                    if (newHeader && currentHeader) {
+                        currentHeader.innerHTML = newHeader.innerHTML;
+                        applyThemeIconVisibility();
+                    }
+                    
+                    // Update body class (e.g. blog-post-page for scroll behavior)
+                    document.body.className = newDoc.body.className || '';
+                    
+                    // When navigating to home, show header (remove scroll-hide state)
+                    if (!document.body.classList.contains('blog-post-page')) {
+                        document.getElementById('page-header')?.classList.remove('header-hidden');
+                    }
+                    
+                    // Update main content
                     const newMainContent = newDoc.querySelector('#main-content');
                     const currentMainContent = document.querySelector('#main-content');
-                    
                     if (newMainContent && currentMainContent) {
-                        // Clear existing content first
-                        currentMainContent.innerHTML = '';
-                        
-                        // Add new content
                         currentMainContent.innerHTML = newMainContent.innerHTML;
+                        currentMainContent.className = newMainContent.className || '';
                     } else {
                         throw new Error('Main content elements not found');
                     }
                     
-                    // Update the URL
                     window.history.pushState({}, '', href);
-                    
-                    // Scroll to top of the page
                     window.scrollTo(0, 0);
                     
-                    // Small delay before re-initializing scripts
                     await new Promise(resolve => setTimeout(resolve, 50));
                     
-                    // Re-initialize any scripts that need to run on the new content
                     setupSidebar();
-                    
-                    // Re-initialize copy buttons if the function exists
+                    setupBlogHeaderScroll();
                     if (typeof setupCopyButtons === 'function') {
                         setupCopyButtons();
                     }
@@ -174,22 +177,32 @@ function enableViewTransitions() {
                     
                     document.title = newDoc.title;
                     
-                    const newMainContent = newDoc.querySelector('#main-content');
-                    const currentMainContent = document.querySelector('#main-content');
-                    
-                    if (newMainContent && currentMainContent) {
-                        currentMainContent.innerHTML = '';
-                        currentMainContent.innerHTML = newMainContent.innerHTML;
+                    const newHeader = newDoc.querySelector('#page-header');
+                    const currentHeader = document.querySelector('#page-header');
+                    if (newHeader && currentHeader) {
+                        currentHeader.innerHTML = newHeader.innerHTML;
+                        applyThemeIconVisibility();
                     }
                     
-                    // Scroll to top for back/forward navigation
+                    document.body.className = newDoc.body.className || '';
+                    
+                    if (!document.body.classList.contains('blog-post-page')) {
+                        document.getElementById('page-header')?.classList.remove('header-hidden');
+                    }
+                    
+                    const newMainContent = newDoc.querySelector('#main-content');
+                    const currentMainContent = document.querySelector('#main-content');
+                    if (newMainContent && currentMainContent) {
+                        currentMainContent.innerHTML = newMainContent.innerHTML;
+                        currentMainContent.className = newMainContent.className || '';
+                    }
+                    
                     window.scrollTo(0, 0);
                     
                     await new Promise(resolve => setTimeout(resolve, 50));
                     
                     setupSidebar();
-                    
-                    // Re-initialize copy buttons if the function exists
+                    setupBlogHeaderScroll();
                     if (typeof setupCopyButtons === 'function') {
                         setupCopyButtons();
                     }
@@ -214,6 +227,33 @@ function enableViewTransitions() {
         }
     });
 }
+
+// --------- THEME TOGGLE ---------
+function applyThemeIconVisibility() {
+    const isDark = document.documentElement.classList.contains('dark');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    if (sunIcon && moonIcon) {
+        if (isDark) {
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        } else {
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        }
+    }
+}
+
+// Delegated click so theme toggle works after header is replaced (view transition)
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('#theme-toggle')) return;
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+    applyThemeIconVisibility();
+});
 
 // --------- SIDEBAR TOGGLE ---------
 const handleSidebarToggleClick = () => {
@@ -257,13 +297,45 @@ const setupSidebar = () => {
     }
 };
 
+// --------- BLOG HEADER SCROLL (match Nuxt: hide on scroll down, show on scroll up) ---------
+let lastScrollY = 0;
+let blogHeaderScrollBound = false;
+
+function handleBlogHeaderScroll() {
+    if (!document.body.classList.contains('blog-post-page')) return;
+    const header = document.getElementById('page-header');
+    if (!header) return;
+    const currentScrollY = window.scrollY;
+    if (currentScrollY < 100) {
+        header.classList.remove('header-hidden');
+    } else if (currentScrollY > lastScrollY) {
+        header.classList.add('header-hidden');
+    } else {
+        header.classList.remove('header-hidden');
+    }
+    lastScrollY = currentScrollY;
+}
+
+function setupBlogHeaderScroll() {
+    if (!document.body.classList.contains('blog-post-page')) return;
+    if (!document.getElementById('page-header')) return;
+    if (!blogHeaderScrollBound) {
+        blogHeaderScrollBound = true;
+        window.addEventListener('scroll', handleBlogHeaderScroll, { passive: true });
+    }
+    lastScrollY = window.scrollY;
+    handleBlogHeaderScroll();
+}
+
 // --------- INITIALIZATION ---------
 // Run on initial load
 if (typeof document !== 'undefined') {
     setupSidebar();
     enableViewTransitions();
+    setupBlogHeaderScroll();
     document.addEventListener('DOMContentLoaded', () => {
         setupSidebar();
         enableViewTransitions();
+        setupBlogHeaderScroll();
     });
 } 

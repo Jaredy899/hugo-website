@@ -1,70 +1,34 @@
 <script>
   function setupCopyButtons() {
-    const codeBlocks = document.querySelectorAll("pre code");
+    document.querySelectorAll(".highlight pre").forEach((preElement) => {
+      if (preElement.querySelector(".copy-code-button")) return;
 
-    codeBlocks.forEach((codeBlock) => {
-      let wrapper = codeBlock.parentElement;
-      if (!wrapper) return;
+      const copySVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+      const checkSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
 
-      if (!wrapper.classList.contains("code-block-wrapper")) {
-        const newWrapper = document.createElement("div");
-        newWrapper.className = "code-block-wrapper";
-        wrapper.insertBefore(newWrapper, codeBlock);
-        newWrapper.appendChild(codeBlock);
-        wrapper = newWrapper;
-      }
+      const btn = document.createElement("button");
+      btn.className = "copy-code-button";
+      btn.setAttribute("aria-label", "Copy code");
+      btn.innerHTML = copySVG;
 
-      if (!wrapper.querySelector(".copy-code-button")) {
-        const copySVG = `
-          <svg xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 24 24"
-               fill="none"
-               stroke="currentColor"
-               stroke-width="2"
-               stroke-linecap="round"
-               stroke-linejoin="round">
-            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-            <path d="M5 15H4a2 2 0 0 1-2-2V4
-                     a2 2 0 0 1 2-2h9
-                     a2 2 0 0 1 2 2v1"/>
-          </svg>`.trim();
+      btn.addEventListener("click", async () => {
+        try {
+          const codeEl = preElement.querySelector("code");
+          const text = codeEl ? codeEl.textContent || "" : "";
+          await navigator.clipboard.writeText(text);
+          const prev = btn.innerHTML;
+          btn.innerHTML = checkSVG + '<span class="btn-text">Copied!</span>';
+          btn.classList.add("copied");
+          setTimeout(() => {
+            btn.innerHTML = prev;
+            btn.classList.remove("copied");
+          }, 2000);
+        } catch (err) {
+          console.error("Failed to copy code:", err);
+        }
+      });
 
-        const checkSVG = `
-          <svg xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 24 24"
-               fill="none"
-               stroke="currentColor"
-               stroke-width="2"
-               stroke-linecap="round"
-               stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>`.trim();
-
-        const btn = document.createElement("button");
-        btn.className = "copy-code-button";
-        btn.setAttribute("aria-label", "Copy code");
-        btn.innerHTML = copySVG;
-
-        btn.addEventListener("click", async () => {
-          try {
-            const text = codeBlock.textContent || "";
-            await navigator.clipboard.writeText(text);
-
-            const prev = btn.innerHTML;
-            btn.innerHTML = checkSVG + '<span class="btn-text">Copied!</span>';
-            btn.classList.add("copied");
-
-            setTimeout(() => {
-              btn.innerHTML = prev;
-              btn.classList.remove("copied");
-            }, 2000);
-          } catch (err) {
-            console.error("Failed to copy code:", err);
-          }
-        });
-
-        wrapper.appendChild(btn);
-      }
+      preElement.appendChild(btn);
     });
   }
 
@@ -75,75 +39,51 @@
 </script>
 
 <style>
-  .code-block-wrapper {
-    position: relative;
-    margin: 0.25rem 0;
-  }
-
-  .copy-code-button {
+  /* Only inside blog code blocks – no global layout impact */
+  .highlight pre .copy-code-button {
     position: absolute;
-    top: 0.25rem;
-    right: 0.25rem;
-    padding: 0.3rem;
-    background: transparent;
-    border: none;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 0.25rem;
     cursor: pointer;
     color: #8b949e;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: all 0.2s ease;
     line-height: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 5;
   }
 
-  .copy-code-button svg {
-    width: 1.25rem;
-    height: 1.25rem;
+  .highlight pre .copy-code-button svg {
+    width: 1rem;
+    height: 1rem;
     stroke: currentColor;
     fill: none;
   }
 
-  .copy-code-button .btn-text {
-    margin-left: 0.3rem;
+  .highlight pre .copy-code-button .btn-text {
+    margin-left: 0.375rem;
     font-size: 0.75rem;
+    font-weight: 500;
   }
 
-  .copy-code-button:hover {
-    background: rgba(110, 118, 129, 0.1);
+  .highlight pre .copy-code-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
     color: #c9d1d9;
   }
 
-  .copy-code-button.copied {
-    background: rgba(46, 164, 79, 0.1);
-    color: #2ea44f;
+  .highlight pre .copy-code-button.copied {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: rgba(34, 197, 94, 0.4);
+    color: #22c55e;
   }
 
-  .copy-code-button:focus {
+  .highlight pre .copy-code-button:focus {
     outline: none;
-  }
-
-  pre {
-    margin: 0;
-    padding: 0.5rem;
-    background: #1a1a1a;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-  }
-
-  code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
-                 Consolas, "Liberation Mono", "Courier New",
-                 monospace;
-    font-size: 0.875rem;
-    line-height: 1.4;
-  }
-
-  /* Dark mode tweaks */
-  :root.dark .copy-code-button:hover {
-    background: rgba(110, 118, 129, 0.2);
-  }
-  :root.dark .copy-code-button.copied {
-    background: rgba(46, 164, 79, 0.2);
   }
 </style> 
